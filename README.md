@@ -1,6 +1,28 @@
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/4db4f5d134eb4480ad2849dee9a62188)](https://www.codacy.com/gh/kkunal1408/ota_data/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kkunal1408/ota_data&amp;utm_campaign=Badge_Grade)
-# check
+# Approximate matching of subcircuit using Graph Convolution Network for node classification
+Base code has been taken from https://github.com/mdeff/cnn_graph
+The code in this repository reads multiple OTA circuits graphs from train_graphs directory.
+It processses all individual graphs to prepare inputs for Graph convolution network.
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5522f70c17914b799bfe15e8eb669bb5)](https://app.codacy.com/gh/kkunal1408/ota_data?utm_source=github.com&utm_medium=referral&utm_content=kkunal1408/ota_data&utm_campaign=Badge_Grade_Settings)
+# The inputs needed for GCN are:
+1. N by N adjacency matrix (N is the number of nodes),
+2. N by D feature matrix (D is the number of features per node), and
+3. N by E binary label matrix (E is the number of classes).
 
-just checking
+Since Graph Convolution network need one graph as input, all OTA circuit graphs has been merged in block diagonal fashion.
+
+# to run the demo use:
+python node_classifier.py
+
+# to preprocess the data use:
+python preprocess_data.py
+this creates a processed_data.p   which in used by the classifier
+=======
+# approximate_matching
+GCN based matching
+
+# to save credemtials: 
+git config credential.helper store  
+git pull
+
+# to visualize   
+tensorboard --logdir=path/to/logs/directory
