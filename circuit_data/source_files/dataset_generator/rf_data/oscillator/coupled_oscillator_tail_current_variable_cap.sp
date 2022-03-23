@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  oscillator
 * Top Cell Name: Simple_cross-coupled_oscillator_tail_current_variable_cap
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -30,7 +30,7 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT Simple_cross-coupled_oscillator_tail_current_variable_cap Vbias_a 
+.SUBCKT Simple_cross-coupled_oscillator_tail_current_variable_cap Vbias_a
 + Vbias_b Vbiasp Vdigital Voutn Voutp
 *.PININFO Vbias_a:I Vbias_b:I Vbiasp:I Vdigital:I Voutn:O Voutp:O
 MM3 net14 Vdigital net17 gnd! nmos_rvt w=27n l=20n nfin=1
@@ -41,9 +41,9 @@ MM2 net15 net10 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM6 net10 Vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
 RR3 Vbias_b net17 5K $[RP]
 RR2 Vbias_a net14 5K $[RP]
-CC2 Voutn net14 10f $[CP]
-CC3 Voutp net17 10f $[CP]
-XL0 Voutn Voutp gnd! vdd! spiral_sym_ct_mu_z w=15u nr=3 rad=60u lay=9 
+CC2 Voutn net14 10f
+CC3 Voutp net17 10f
+XL0 Voutn Voutp gnd! vdd! spiral_sym_ct_mu_z w=15u nr=3 rad=60u lay=9
 + spacing=2u gdis=50u m=1
 .ENDS
 

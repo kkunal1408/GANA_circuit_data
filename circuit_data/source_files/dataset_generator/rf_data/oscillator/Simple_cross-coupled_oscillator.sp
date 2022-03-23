@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  oscillator
 * Top Cell Name: Simple_cross-coupled_oscillator
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -36,8 +36,8 @@ LL1 vdd! Voutp 2m $[LP]
 LL0 vdd! Voutn 2m $[LP]
 RR1 vdd! Voutp 5K $[RP]
 RR0 vdd! Voutn 5K $[RP]
-CC0 vdd! Voutp 10f $[CP]
-CC1 vdd! Voutn 10f $[CP]
+CC0 vdd! Voutp 10f
+CC1 vdd! Voutn 10f
 MM1 Voutn Voutp gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM0 Voutp Voutn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 .ENDS

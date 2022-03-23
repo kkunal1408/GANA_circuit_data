@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  RF_LNA
 * Top Cell Name: 11_CS_inductive_degenerate
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -35,7 +35,7 @@
 LL0 vdd! Vout 1n $[LP]
 LL2 Vin net13 1n $[LP]
 LL1 net12 gnd! 1n $[LP]
-CC0 vdd! Vout 1p $[CP]
+CC0 vdd! Vout 1p
 RR0 Vout vdd! 1K $[RP]
 RR1 net13 Vbiasn 1K $[RP]
 MM0 Vout vdd! net14 gnd! nmos_rvt w=27n l=20n nfin=1

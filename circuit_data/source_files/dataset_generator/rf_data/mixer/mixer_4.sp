@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  RF_mixer
 * Top Cell Name: 4_double_balanced_sampling_mixer
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -34,12 +34,12 @@ MM3 Vrfn net78 vifp gnd! nmos_rvt w=27n l=20n nfin=1
 MM2 Vrfn net80 vifm gnd! nmos_rvt w=27n l=20n nfin=1
 MM1 Vrfp net81 vifp gnd! nmos_rvt w=27n l=20n nfin=1
 MM0 Vrfp net83 vifm gnd! nmos_rvt w=27n l=20n nfin=1
-CC5 vifp gnd! 1p $[CP]
-CC2 vlom net80 1p $[CP]
-CC0 net78 vlop 1p $[CP]
-CC4 vifm gnd! 1p $[CP]
-CC3 vlop net83 1p $[CP]
-CC1 net81 vlom 1p $[CP]
+CC5 vifp gnd! 1p
+CC2 vlom net80 1p
+CC0 net78 vlop 1p
+CC4 vifm gnd! 1p
+CC3 vlop net83 1p
+CC1 net81 vlom 1p
 RR5 net78 Vbiasn 1K $[RP]
 RR4 net80 Vbiasn 1K $[RP]
 RR0 net81 Vbiasn 1K $[RP]

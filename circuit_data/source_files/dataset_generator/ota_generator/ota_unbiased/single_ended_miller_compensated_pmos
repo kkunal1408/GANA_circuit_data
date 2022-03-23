@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  OTA_class
 * Top Cell Name: single_ended_miller_compensated_pmos
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -39,6 +39,6 @@ MM12 Voutp Vbiasp vdd! vdd! pmos w=WA l=LA nfin=nA
 MM11 net33 Vbiasp vdd! vdd! pmos w=WA l=LA nfin=nA
 MM10 net38 Vinn net33 net39 pmos w=WA l=LA nfin=nA
 MM7 net35 Vinp net33 net39 pmos w=WA l=LA nfin=nA
-CC2 Voutp net38 1p $[CP]
+CC2 Voutp net38 1p
 .ENDS
 

@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  RF_LNA
 * Top Cell Name: 6_CG_biasing_with_resistor
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -32,7 +32,7 @@
 
 .SUBCKT 6_CG_biasing_with_resistor Vbiasn Vin Vout
 *.PININFO Vbiasn:I Vin:I Vout:O
-CC1 Vin net14 1p $[CP]
+CC1 Vin net14 1p
 RRb gnd! net14 1K $[RP]
 MM0 Vout Vbiasn net14 gnd! nmos_rvt w=27n l=20n nfin=1
 LL0 vdd! Vout 1n $[LP]

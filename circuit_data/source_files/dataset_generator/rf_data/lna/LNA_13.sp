@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  RF_LNA
 * Top Cell Name: 13_CS_transformer_feedforward
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -32,9 +32,9 @@
 
 .SUBCKT 13_CS_transformer_feedforward Vbiasp Vin Vout
 *.PININFO Vbiasp:I Vin:I Vout:O
-CC2 vdd! gnd! 1p $[CP]
-CC0 vdd! Vout 1p $[CP]
-CC1 Vin net21 1p $[CP]
+CC2 vdd! gnd! 1p
+CC0 vdd! Vout 1p
+CC1 Vin net21 1p
 RR0 Vout vdd! 1K $[RP]
 MM2 net28 vdd! gnd! net28 nmos_rvt w=27n l=20n nfin=1
 MM1 Vout net012 net21 gnd! nmos_rvt w=27n l=20n nfin=1

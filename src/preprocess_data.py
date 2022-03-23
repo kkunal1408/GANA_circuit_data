@@ -47,16 +47,15 @@ def write_results(df, graph_id, graph, results_dir_path, status='test'):
 features_name = ["name", "nmos", "pmos", "cap", "res",
          "inductor", 'net', 'power', 'gnd', 'bias',
          'in', 'out', 'port', 'values', "label"]
-def read_inputs(dir_path, results_dir_path, data_type, num_of_designs, skip, debug=False):
+def read_inputs(dir_path, results_dir_path, data_type, num_of_designs):
     input_files = os.listdir(dir_path)
+    assert len(input_files) > 0, f"No graphs found in directory {dir_path}"
     if not results_dir_path.endswith('/'):
         results_dir_path = results_dir_path +'/'
-    csv_path = results_dir_path + 'csv/'
     design_no = 0
     graph_id = []
     node_count = 0
     merged_graph = None
-    merged_node_map = {}
     df = pd.DataFrame()
     for file in input_files:
         if file.endswith("json"):
@@ -64,27 +63,18 @@ def read_inputs(dir_path, results_dir_path, data_type, num_of_designs, skip, deb
             if design_no > num_of_designs:
                 print(f'Reading {num_of_designs} designs done!')
                 break
-            if design_no < skip:
-                print(f'skipping {skip} designs')
-                continue
-            print("reading file", dir_path+file)
+            print("reading file", dir_path+'/'+file)
             hier_graph = json_graph.node_link_graph(
-                json.load(open(dir_path+file)))
+                json.load(open(dir_path+'/'+file)))
             feature_matrix = []
-            # feature_matrix.append(["node_number","nmos", "pmos", "cap", "res",
-            #                        "inductor", 'net', 'power', 'gnd', 'bias',
-            #                        'input', 'output', 'port', 'values'])
             if not os.path.exists(results_dir_path):
                 os.mkdir(results_dir_path)
-            if not os.path.exists(csv_path):
-                os.mkdir(csv_path)
             mapping = {}
             for node, attr in hier_graph.nodes(data=True):
                 graph_id.append(design_no)
                 mapping[node] = node_count
                 feature = []
                 feature.append(node)
-                # feature.append(node_count)
                 node_count += 1
                 if 'inst_type' in attr:
                     for itype in ["nmos", "pmos", "cap", "res", "inductor", 'net']:
@@ -131,42 +121,27 @@ def read_inputs(dir_path, results_dir_path, data_type, num_of_designs, skip, deb
                 df = df.append(pd.DataFrame(
                     feature_matrix, columns=features_name), ignore_index=True)
             hier_graph_int = nx.relabel_nodes(hier_graph, mapping)
-            # labels.extend(list(np.ones(len(feature_matrix))))
-            # for name, id in mapping.items():
-            #     if not 'XIOTA' in name.upper():
-            #         labels[id] = 0
 
-            # for node_key in ['values']:
-            #     one_hot = pd.get_dummies(feature_matrix[node_key])
-            #     data_pre = data_pre.drop(node_key, axis=1)
-            #     data_pre = data_pre.join(one_hot, rsuffix=node_key)
-            # for node_key in ['edge_weight', 'values', 'ports']:
-            #     data_pre[node_key], _ = pd.factorize(data_pre[node_key])
-            # dropped = data_pre.drop(
-            #     ['sub_graph', 'source', 'inst_name'], axis=1)
-            # dropped.to_csv(csv_path+
-            #                file[:-5]+'_updated.csv', sep='\t')
-            # feat.extend(list(dropped.to_numpy()))
             if merged_graph:
                 merged_graph = nx.compose(merged_graph, hier_graph_int)
             else:
                 merged_graph = hier_graph_int
-            # merged_node_map.update({v: k for k, v in mapping.items()})
-            # print(df)
     write_results(df, graph_id=graph_id, graph=merged_graph,
                   results_dir_path=results_dir_path, status = data_type)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="folder paths")
-    parser.add_argument("-od", "--output_dir", type=str)
-    parser.add_argument("-id", "--input_dir", type=str)
-    parser.add_argument("-type", "--data_type", type=str, default='train')
+    parser.add_argument("-d", "--dir", type=str)
+    parser.add_argument("-c", "--count", type=str, default=10000)
     args = parser.parse_args()
-    input_dir_path = args.input_dir+'/'+args.data_type+'/'
-    output_dir_path = args.output_dir
-    data_type = args.data_type
-    assert os.path.exists(input_dir_path), f"please provide directory path for input graphs e.g. full_ota_graphs/ "
-    assert output_dir_path, f"please provide directory path to save processed data e.g., train_data"
-    assert data_type in ['train', 'test', 'valid'], f"please select train/test/valid"
-    input_dict = read_inputs(input_dir_path, output_dir_path, data_type, 2000, 0)
+    input_dir_path = args.dir+'/graphs'
+    assert os.path.exists(
+        input_dir_path), f"directory does not exist {input_dir_path}"
+    output_dir_path = args.dir +'/processed'
+    assert not os.path.exists(output_dir_path), f"please remove directory {output_dir_path} to save processed data"
+
+    for data_type in ['train', 'test', 'valid']:
+        split_dir = input_dir_path + '/' + data_type + '/'
+        assert os.path.exists(split_dir), f"no directory found {split_dir}"
+        input_dict = read_inputs(split_dir, output_dir_path, data_type, int(args.count))

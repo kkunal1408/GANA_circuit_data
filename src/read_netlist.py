@@ -7,18 +7,18 @@ Created on Wed Oct 10 13:04:45 2018
 
 # %% Parser
 
+from zipfile import ZipFile
 import networkx as nx
 import os
 import argparse
 import logging
 import json
+import shutil
 from networkx.readwrite import json_graph
 
 #import re
-import matplotlib.pyplot as plt
 from collections import defaultdict
 from BasicElement import BasicElement
-from networkx.algorithms import bipartite
 
 logging.basicConfig(filename='logfile.log', level=logging.DEBUG)
 
@@ -328,49 +328,31 @@ def _write_circuit_graph(out_dir, data_type, filename, graph):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description="directory path for input circuits")
-    parser.add_argument("-id", "--input_dir", type=str,
-                        default='../training_set_netlist')
-    parser.add_argument("-od", "--output_dir", type=str,
-                        default='../graphs')
-    parser.add_argument("-f", "--file", type=str, default=None)
-    parser.add_argument("-s", "--subckt", type=str, default=None)
+    parser.add_argument("-d", "--input_zip", type=str)
     parser.add_argument("-flat", "--flat", type=int, default=1)
-    parser.add_argument("-type", "--data_type", type=str, default='train')
     args = parser.parse_args()
-    netlist_dir = args.input_dir + '/' + args.data_type
-    assert args.data_type in ['train', 'test',
-                         'valid'], f"please select train/test/valid"
-
-    if not os.path.isdir(netlist_dir):
-        logging.info("Input dir doesn't exist. Please enter a valid dir path")
-        print("Input dir doesn't exist. Please enter a valid dir path")
-
-    netlist_files = os.listdir(netlist_dir)
-    if len(netlist_files) == 0:
-        print("No spice files found in input_circuit directory. exiting")
-        logging.info(
-            "No spice files found in input_circuit directory. exiting")
-        exit(0)
-    elif args.file:
-        logging.info("Reading file"+args.file)
-        netlist_files = [args.file]
-    #output_dir ='train_nodes/'
-    for netlist in netlist_files:
-        if netlist.endswith('sp') or netlist.endswith('cdl') or args.file:
-            logging.info("READING files in dir: "+netlist_dir)
-            logging.info("READ file: "+netlist_dir+'/'+netlist)
-            if args.subckt and args.flat:
-                sp = spiceParser(netlist_dir+'/'+netlist,
-                                 args.subckt, FLAT=args.flat)
-            elif args.subckt:
-                sp = spiceParser(netlist_dir+'/'+netlist, args.subckt)
-            elif args.flat:
-                sp = spiceParser(netlist_dir+'/'+netlist, FLAT=args.flat)
+    spice_files = args.input_zip
+    output_dir = os.path.dirname(spice_files) + '/graphs'
+    output_path = spice_files.split(".")[0]
+    assert not os.path.exists(
+        output_path), f"please delete existing directory {output_path}"
+    assert not os.path.exists(
+        output_dir), f"please delete existing directory {output_dir}"
+    with ZipFile(spice_files, 'r') as zip:
+        # extract all files
+        zip.extractall(os.path.dirname(output_path))
+    for data_type in ['train', 'test', 'valid']:
+        split_dir = output_path + '/' + data_type
+        assert os.path.exists(split_dir), f"No {data_type} data found"
+        for netlist in os.listdir(split_dir):
+            if netlist.endswith('.sp'):
+                logging.info("READ file: "+split_dir+'/'+netlist)
+                sp = spiceParser(split_dir+'/'+netlist, FLAT=args.flat)
+                circuit_graph = sp.sp_parser()
+                if circuit_graph:
+                    _write_circuit_graph(output_dir, data_type, netlist.split('.')[0], circuit_graph)
             else:
-                sp = spiceParser(netlist_dir+'/'+netlist)
+                print("Not a valid file type (.sp).Skipping this file")
+    #Remove extracted zip file
+    shutil.rmtree(output_path)
 
-            circuit_graph = sp.sp_parser()
-            if circuit_graph:
-                _write_circuit_graph(args.output_dir, args.data_type, netlist.split('.')[0], circuit_graph)
-        else:
-            print("Not a valid file type (.sp/cdl).Skipping this file")

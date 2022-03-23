@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  RF_LNA
 * Top Cell Name: 14_CS_noise_cancelling
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -35,9 +35,9 @@
 MM4 Vout net10 vdd! vdd! pmos_rvt w=27n l=20n nfin=1
 MM0 net8 gnd! net9 vdd! pmos_rvt w=27n l=20n nfin=1
 MM3 net9 Vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
-CC0 vdd! net9 1p $[CP]
-CC3 net8 net10 1p $[CP]
-CC2 Vin gnd! 1p $[CP]
+CC0 vdd! net9 1p
+CC3 net8 net10 1p
+CC2 Vin gnd! 1p
 RR0 net10 vdd! 1K $[RP]
 RR1 gnd! net8 1K $[RP]
 MM1 net8 gnd! gnd! gnd! nmos_rvt w=27n l=20n nfin=1

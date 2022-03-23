@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  RF_LNA
 * Top Cell Name: 18_CS_differential
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -40,8 +40,8 @@ MM0 Vout2 vdd! net31 gnd! nmos_rvt w=27n l=20n nfin=1
 MM1 net31 net30 net33 gnd! nmos_rvt w=27n l=20n nfin=1
 MM3 net32 net29 net34 gnd! nmos_rvt w=27n l=20n nfin=1
 MM2 Vout1 vdd! net32 gnd! nmos_rvt w=27n l=20n nfin=1
-CC1 Vin2 net30 1p $[CP]
-CC0 Vin1 net29 1p $[CP]
+CC1 Vin2 net30 1p
+CC0 Vin1 net29 1p
 RR1 Vbiasn net30 1K $[RP]
 RR0 Vbiasn net29 1K $[RP]
 .ENDS

@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  RF_mixer
 * Top Cell Name: 2_double_balanced_passive_mixer
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -34,10 +34,10 @@ MM3 Vrfn net70 vifp gnd! nmos_rvt w=27n l=20n nfin=1
 MM2 Vrfn net72 vifm gnd! nmos_rvt w=27n l=20n nfin=1
 MM1 Vrfp net73 vifp gnd! nmos_rvt w=27n l=20n nfin=1
 MM0 Vrfp net75 vifm gnd! nmos_rvt w=27n l=20n nfin=1
-CC2 vlom net72 1p $[CP]
-CC0 net70 vlop 1p $[CP]
-CC3 vlop net75 1p $[CP]
-CC1 net73 vlom 1p $[CP]
+CC2 vlom net72 1p
+CC0 net70 vlop 1p
+CC3 vlop net75 1p
+CC1 net73 vlom 1p
 RR7 gnd! vifp 1K $[RP]
 RR5 net70 Vbiasn 1K $[RP]
 RR4 net72 Vbiasn 1K $[RP]

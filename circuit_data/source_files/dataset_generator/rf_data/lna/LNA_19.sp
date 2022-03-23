@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  RF_LNA
 * Top Cell Name: test_circuit
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -35,7 +35,7 @@
 RR0 vdd! Vout2 1K $[RP]
 RR1 vdd! Vout1 1K $[RP]
 RRb gnd! net16 1K $[RP]
-CC1 Vin net16 1p $[CP]
+CC1 Vin net16 1p
 MM1 Vout2 net16 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM0 Vout1 Vbiasn net16 gnd! nmos_rvt w=27n l=20n nfin=1
 .ENDS

@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  RF_mixer
 * Top Cell Name: 7_passive_with_gain_stage_bias_bath_RF
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -30,13 +30,13 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 7_passive_with_gain_stage_bias_bath_RF Vbiasp Vinn Voutn Voutp vlom 
+.SUBCKT 7_passive_with_gain_stage_bias_bath_RF Vbiasp Vinn Voutn Voutp vlom
 + vlop
 *.PININFO Vbiasp:I Vinn:I vlom:I vlop:I Voutn:O Voutp:O
-CC0 Vinn net36 1p $[CP]
-CC1 net40 gnd! 1p $[CP]
-CC5 vlop net38 1p $[CP]
-CC4 vlom net39 1p $[CP]
+CC0 Vinn net36 1p
+CC1 net40 gnd! 1p
+CC5 vlop net38 1p
+CC4 vlom net39 1p
 MM2 net40 net40 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM4 net36 net38 net30 gnd! nmos_rvt w=27n l=20n nfin=1
 MM1 Voutp net30 gnd! gnd! nmos_rvt w=27n l=20n nfin=1

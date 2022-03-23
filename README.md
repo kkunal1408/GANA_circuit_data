@@ -1,4 +1,4 @@
-# Approximate matching of subcircuit using Graph Convolution Network for node classification
+# DATA for Approximate matching of subcircuit using Graph Convolution Network for node classification
 Base code has been taken from https://github.com/mdeff/cnn_graph
 The code in this repository reads multiple OTA circuits graphs from train_graphs directory.
 It processses all individual graphs to prepare inputs for Graph convolution network.
@@ -10,19 +10,17 @@ It processses all individual graphs to prepare inputs for Graph convolution netw
 
 Since Graph Convolution network need one graph as input, all OTA circuit graphs has been merged in block diagonal fashion.
 
-# to run the demo use:
-python node_classifier.py
 
 # to preprocess the data use:
-python preprocess_data.py
-this creates a processed_data.p   which in used by the classifier
-=======
-# approximate_matching
-GCN based matching
+To create graph from spice files:
 
-# to save credemtials: 
-git config credential.helper store  
-git pull
+```
+python3 src/read_netlist.py -d circuit_data/OTA_data/spice.zip
+```
 
-# to visualize   
-tensorboard --logdir=path/to/logs/directory
+To extract features from the graphs a  which is used by the classifier
+
+```
+python3 src/preprocess_data.py -d circuit_data/OTA_data/
+```
+This creates a processed file in the circuit_data/OTA_data directory which will be used for subcircuit identification

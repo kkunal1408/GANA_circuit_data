@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  training_set
 * Top Cell Name: biased_lna_1_2
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -47,7 +47,7 @@ MM0 Vbiasn Vbiasn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM1 Vout Vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
 MM0 Vout net6 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 RRF Vout net6 1K $[RP]
-CC1 Vin net6 1p $[CP]
+CC1 Vin net6 1p
 .ENDS
 
 ************************************************************************

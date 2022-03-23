@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  RF_mixer
 * Top Cell Name: 12_single_balanced_load_current_source
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -30,15 +30,15 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 12_single_balanced_load_current_source Vb Vbiasn1 Vbiasn2 Vbiasp Voutn 
+.SUBCKT 12_single_balanced_load_current_source Vb Vbiasn1 Vbiasn2 Vbiasp Voutn
 + Voutp Vrf vlon vlop
 *.PININFO Vb:I Vbiasn1:I Vbiasn2:I Vbiasp:I Vrf:I vlon:I vlop:I Voutn:O Voutp:O
 MM1 Voutp net017 net21 gnd! nmos_rvt w=27n l=20n nfin=1
 MM0 Voutn net019 net21 gnd! nmos_rvt w=27n l=20n nfin=1
 MM2 net21 net25 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-CC2 vlop net017 1p $[CP]
-CC3 vlon net019 1p $[CP]
-CC1 Vrf net25 1p $[CP]
+CC2 vlop net017 1p
+CC3 vlon net019 1p
+CC1 Vrf net25 1p
 RR2 Voutp vdd! 1K $[RP]
 RR0 Voutn vdd! 1K $[RP]
 RR6 net019 Vbiasn2 1K $[RP]

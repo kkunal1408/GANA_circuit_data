@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  RF_LNA
 * Top Cell Name: 2_CS_resistive_feedback
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -35,6 +35,6 @@
 MM1 Vout Vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
 MM0 Vout net6 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 RRF Vout net6 1K $[RP]
-CC1 Vin net6 1p $[CP]
+CC1 Vin net6 1p
 .ENDS
 

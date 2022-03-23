@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  RF_LNA
 * Top Cell Name: 1_CS_inductive_load
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -35,6 +35,6 @@
 LL0 vdd! Vout 2m $[LP]
 MM0 Vout net5 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 RR0 Vbiasn net5 5K $[RP]
-CC1 Vin net5 10f $[CP]
+CC1 Vin net5 10f
 .ENDS
 

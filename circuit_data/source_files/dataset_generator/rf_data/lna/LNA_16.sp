@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  RF_LNA
 * Top Cell Name: 15_resistance_cancelling_lna
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -35,7 +35,7 @@
 RR3 vout1 vdd! 1K $[RP]
 RR0 net9 vdd! 1K $[RP]
 RR4 vout2 vdd! 1K $[RP]
-CC1 Vin vout2 1p $[CP]
+CC1 Vin vout2 1p
 MM8 vout2 vout1 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM7 vout1 net9 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM6 vout2 Vbiasn gnd! gnd! nmos_rvt w=27n l=20n nfin=1

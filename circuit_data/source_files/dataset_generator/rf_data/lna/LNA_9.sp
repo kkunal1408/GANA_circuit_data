@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  RF_LNA
 * Top Cell Name: 9_CG_cascode_stage_biasing
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -32,9 +32,9 @@
 
 .SUBCKT 9_CG_cascode_stage_biasing Vbiasp Vin Vout
 *.PININFO Vbiasp:I Vin:I Vout:O
-CC2 net31 gnd! 1p $[CP]
-CC0 vdd! Vout 1p $[CP]
-CC1 Vin net23 1p $[CP]
+CC2 net31 gnd! 1p
+CC0 vdd! Vout 1p
+CC1 Vin net23 1p
 RR1 gnd! net28 1K $[RP]
 RR0 Vout vdd! 1K $[RP]
 RR2 gnd! net23 1K $[RP]
