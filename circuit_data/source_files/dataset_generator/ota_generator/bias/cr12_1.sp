@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  biasing_circuits
 * Top Cell Name: CR12_1
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -19,7 +19,7 @@
 .PARAM
 
 *.GLOBAL vdd!
-+        gnd!
+*+        gnd!
 
 *.PIN vdd!
 *+    gnd!

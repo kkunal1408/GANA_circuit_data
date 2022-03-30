@@ -31,8 +31,7 @@ def write_results(df, graph_id, graph, results_dir_path, status='test'):
     # size =pd.get_dummies(df['values'])
     # size = df['values']
     # print(size)
-    feat = df.drop(['name', 'label', 'values'], axis=1) #.join(size, rsuffix='value')
-    # print(np.array(feat))
+    feat = df.drop(['name', 'label', 'values'], axis=1)
     assert feat.shape[1] ==12, f"{feat.shape}"
     np.save(dir+status+'_feats.npy', np.array(feat, dtype=np.int64))
     np.save(dir+status+'_labels.npy', np.array(mod_label, dtype=np.int64))

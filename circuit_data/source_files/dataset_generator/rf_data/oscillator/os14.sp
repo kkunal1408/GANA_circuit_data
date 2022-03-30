@@ -19,7 +19,7 @@
 .PARAM
 
 *.GLOBAL gnd!
-+        vdd!
+* *+        vdd!
 
 *.PIN gnd!
 *+    vdd!
@@ -40,6 +40,5 @@ XC4 Voutn Vtune Vdigital moscap_rf wr=1.6u lr=400n br=4 gr=3 m=1
 XC5 Vtune Voutp Vdigital moscap_rf wr=1.6u lr=400n br=4 gr=3 m=1
 MM6 net9 Vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
 XL0 Voutn Voutp gnd! vdd! spiral_sym_ct_mu_z w=15u nr=3 rad=60u lay=9
-+ spacing=2u gdis=50u m=1
 .ENDS
 

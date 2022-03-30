@@ -19,7 +19,7 @@
 .PARAM
 
 *.GLOBAL vdd!
-+        gnd!
+*+        gnd!
 
 *.PIN vdd!
 *+    gnd!
@@ -30,8 +30,7 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 11_single_balanced_active_mixer_cap_at_output Vbiasn1 Vbiasn2 Voutn
-+ Voutp Vrf vlon vlop
+.SUBCKT 11_single_balanced_active_mixer_cap_at_output Vbiasn1 Vbiasn2 Voutn Voutp Vrf vlon vlop
 *.PININFO Vbiasn1:I Vbiasn2:I Vrf:I vlon:I vlop:I Voutn:O Voutp:O
 MM1 Voutp net015 net17 gnd! nmos_rvt w=27n l=20n nfin=1
 MM0 Voutn net017 net17 gnd! nmos_rvt w=27n l=20n nfin=1
@@ -41,10 +40,10 @@ CC4 vlon net017 1p
 CC3 Voutp gnd! 1p
 CC0 Voutn gnd! 1p
 CC1 Vrf net20 1p
-RR6 net017 Vbiasn2 1K
-RR2 Voutp vdd! 1K
-RR0 Voutn vdd! 1K
-RR5 net015 Vbiasn2 1K
-RR4 net20 Vbiasn1 1K
+RR6 net017 Vbiasn2 res=1K
+RR2 Voutp vdd! res=1K
+RR0 Voutn vdd! res=1K
+RR5 net015 Vbiasn2 res=1K
+RR4 net20 Vbiasn1 res=1K
 .ENDS
 

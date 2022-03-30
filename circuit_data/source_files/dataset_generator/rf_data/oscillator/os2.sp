@@ -19,7 +19,7 @@
 .PARAM
 
 *.GLOBAL vdd!
-+        gnd!
+*+        gnd!
 
 *.PIN vdd!
 *+    gnd!
@@ -35,6 +35,5 @@
 MM1 Voutn Voutp gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM0 Voutp Voutn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 XL0 Voutn Voutp gnd! vdd! spiral_sym_ct_mu_z w=15u nr=3 rad=60u lay=9
-+ spacing=2u gdis=50u m=1
 .ENDS
 

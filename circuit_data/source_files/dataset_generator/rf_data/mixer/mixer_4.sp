@@ -40,9 +40,9 @@ CC0 net78 vlop 1p
 CC4 vifm gnd! 1p
 CC3 vlop net83 1p
 CC1 net81 vlom 1p
-RR5 net78 Vbiasn 1K
-RR4 net80 Vbiasn 1K
-RR0 net81 Vbiasn 1K
-RR1 net83 Vbiasn 1K
+RR5 net78 Vbiasn res=1K
+RR4 net80 Vbiasn res=1K
+RR0 net81 Vbiasn res=1K
+RR1 net83 Vbiasn res=1K
 .ENDS
 

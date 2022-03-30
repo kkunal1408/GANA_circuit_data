@@ -19,7 +19,7 @@
 .PARAM
 
 *.GLOBAL vdd!
-+        gnd!
+*+        gnd!
 
 *.PIN vdd!
 *+    gnd!
@@ -32,12 +32,12 @@
 
 .SUBCKT 5_output_combining_single_balanced_sampling_mixer Vbiasn Vrfn Vrfp vlom vlop Voutn Voutp
 *.PININFO Vbiasn:I Vrfn:I Vrfp:I vlom:I vlop:I
-RR5 Vbiasn net024 1K
-RR4 Vbiasn net023 1K
-RR3 Vbiasn net026 1K
-RR1 Vbiasn net025 1K
-RR0 Voutn vdd! 1K
-RR2 Voutp vdd! 1K
+RR5 Vbiasn net024 res=1K
+RR4 Vbiasn net023 res=1K
+RR3 Vbiasn net026 res=1K
+RR1 Vbiasn net025 res=1K
+RR0 Voutn vdd! res=1K
+RR2 Voutp vdd! res=1K
 MM7 Vrfp net026 net016 gnd! nmos_rvt w=27n l=20n nfin=1
 MM6 Vrfp net023 net017 gnd! nmos_rvt w=27n l=20n nfin=1
 MM5 Vrfn net025 net45 gnd! nmos_rvt w=27n l=20n nfin=1

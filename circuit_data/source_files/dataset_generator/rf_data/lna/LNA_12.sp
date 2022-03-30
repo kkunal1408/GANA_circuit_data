@@ -19,7 +19,7 @@
 .PARAM
 
 *.GLOBAL vdd!
-+        gnd!
+*+        gnd!
 
 *.PIN vdd!
 *+    gnd!
@@ -32,13 +32,13 @@
 
 .SUBCKT 12_CS_inductive_degenerate_with_pads Vbiasn Vout Vpad
 *.PININFO Vbiasn:I Vpad:I Vout:O
-LL0 vdd! Vout 1n
-LL1 net18 gnd! 1n
+LL0 vdd! Vout ind=1n
+LL1 net18 gnd! ind=1n
 MM0 Vout vdd! net17 gnd! nmos_rvt w=27n l=20n nfin=1
 MM1 net17 Vpad net18 gnd! nmos_rvt w=27n l=20n nfin=1
 CC1 Vbiasn gnd! 1p
 CC0 vdd! Vout 1p
-RR0 Vout vdd! 1K
-RR1 Vbiasn Vpad 1K
+RR0 Vout vdd! res=1K
+RR1 Vbiasn Vpad res=1K
 .ENDS
 

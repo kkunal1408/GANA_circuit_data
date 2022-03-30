@@ -19,7 +19,7 @@
 .PARAM
 
 *.GLOBAL gnd!
-* +        vdd!
+* *+        vdd!
 
 *.PIN gnd!
 *+    vdd!
@@ -32,7 +32,7 @@
 
 .SUBCKT negative_resistance_oscillator_2 Voutn Voutp
 *.PININFO Voutn:O Voutp:O
-LL1 Voutn Voutp 1n
+LL1 Voutn Voutp ind=1n
 MM3 Voutn Voutp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
 MM2 Voutp Voutn net13 net13 pmos_rvt w=27n l=20n nfin=1
 MM1 Voutn Voutp gnd! gnd! nmos_rvt w=27n l=20n nfin=1

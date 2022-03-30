@@ -19,7 +19,7 @@
 .PARAM
 
 *.GLOBAL gnd!
-* +        vdd!
+* *+        vdd!
 
 *.PIN gnd!
 *+    vdd!
@@ -32,9 +32,9 @@
 
 .SUBCKT 16_resistance_cancelling_lna Vbiasn Vin vout1 vout2
 *.PININFO Vbiasn:I Vin:I vout1:O vout2:O
-RR3 vout1 vdd! 1K
-RR0 net9 vdd! 1K
-RR4 vout2 vdd! 1K
+RR3 vout1 vdd! res=1K
+RR0 net9 vdd! res=1K
+RR4 vout2 vdd! res=1K
 CC1 Vin vout2 1p
 MM8 vout2 vout1 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM7 vout1 net9 gnd! gnd! nmos_rvt w=27n l=20n nfin=1

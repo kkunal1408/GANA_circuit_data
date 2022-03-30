@@ -19,7 +19,7 @@
 .PARAM
 
 *.GLOBAL gnd!
-+        vdd!
+*+        vdd!
 
 *.PIN gnd!
 *+    vdd!
@@ -32,9 +32,9 @@
 
 .SUBCKT test_circuit Vbiasn Vin Vout1 Vout2
 *.PININFO Vbiasn:I Vin:I Vout1:O Vout2:O
-RR0 vdd! Vout2 1K
-RR1 vdd! Vout1 1K
-RRb gnd! net16 1K
+RR0 vdd! Vout2 res=1K
+RR1 vdd! Vout1 res=1K
+RRb gnd! net16 res=1K
 CC1 Vin net16 1p
 MM1 Vout2 net16 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM0 Vout1 Vbiasn net16 gnd! nmos_rvt w=27n l=20n nfin=1

@@ -18,7 +18,7 @@ class BasicElement:
             elif value.endswith('p'):
                 total = total*self.is_float(value.replace('p',''))
             else:
-                print(f"undefined value {value} for {self.line}")
+                assert False,f"undefined value {value} for {self.line}"
         return total
     def is_float(self, st):
         try:
@@ -34,6 +34,14 @@ class BasicElement:
         edge_weight = [8,8]
         return {"inst":capacitance, "inst_type":"cap" , "ports":edges , "edge_weight":edge_weight, "values":self.total_size(value)}
 
+    def Capacitor_3t(self):
+        #cap: c7 net7 vinp c1
+        [capacitance, plus, minus, level] = self.line.strip().split()[0:4]
+        value = self.line.strip().split()[5:]
+        edges = [plus, minus, level]
+        edge_weight = [8, 8, 8]
+        return {"inst": capacitance, "inst_type": "cap", "ports": edges, "edge_weight": edge_weight, "values": self.total_size(value)}
+
     def Resistor(self):
         #Res: c7 net7 vinp c1
         [resistance, plus, minus]=self.line.strip().split()[0:3]
@@ -47,9 +55,17 @@ class BasicElement:
         #Res: c7 net7 vinp c1
         [inductance, plus, minus]=self.line.strip().split()[0:3]
         value = self.line.strip().split()[3:]
-
         edges = [plus,minus]
         edge_weight = [8,8]
+        return {"inst": inductance, "inst_type": "inductor", "ports": edges, "edge_weight": edge_weight, "values": self.total_size(value)}
+
+    def Inductor_4t(self):
+        #XL0 Voutp Voutn gnd! vdd! spiral_sym_ct_mu_z w=15u nr=3 rad=60u lay=9
+        [inductance, plus, minus, gnd, vdd] = self.line.strip().split()[0:5]
+        value = self.line.strip().split()[6:]
+
+        edges = [plus, minus, gnd, vdd]
+        edge_weight = [8, 8, 8, 8]
         return {"inst": inductance, "inst_type": "inductor", "ports": edges, "edge_weight": edge_weight, "values": self.total_size(value)}
 
     def Transistor(self):

@@ -19,7 +19,7 @@
 .PARAM
 
 *.GLOBAL vdd!
-+        gnd!
+*+        gnd!
 
 *.PIN vdd!
 *+    gnd!
@@ -34,7 +34,7 @@
 *.PININFO Vbiasp:I Vin:I Vout:O
 MM1 Vout Vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
 MM0 Vout net6 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-RRF Vout net6 1K
+RRF Vout net6 res=1K
 CC1 Vin net6 1p
 .ENDS
 

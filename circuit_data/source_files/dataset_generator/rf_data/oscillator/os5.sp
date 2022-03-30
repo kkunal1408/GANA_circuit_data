@@ -19,7 +19,7 @@
 .PARAM
 
 *.GLOBAL vdd!
-+        gnd!
+*+        gnd!
 
 *.PIN vdd!
 *+    gnd!
@@ -30,11 +30,9 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT cross_coupled_oscillator_nmos_cap_vbias Vbiasn Vdigital Voutn
-+ Voutp Vtune
+.SUBCKT cross_coupled_oscillator_nmos_cap_vbias Vbiasn Vdigital Voutn Voutp Vtune
 *.PININFO Vbiasn:I Vdigital:I Vtune:I Voutn:O Voutp:O
 XL0 Voutn Voutp gnd! net14 spiral_sym_ct_mu_z w=15u nr=3 rad=60u lay=9
-+ spacing=2u gdis=50u m=1
 MM6 net8 Vbiasn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM3 gnd! Voutn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM2 gnd! Voutp gnd! gnd! nmos_rvt w=27n l=20n nfin=1

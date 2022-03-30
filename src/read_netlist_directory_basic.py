@@ -7,7 +7,6 @@ Created on Wed Oct 10 13:04:45 2018
 
 # %% Parser
 
-from zipfile import ZipFile
 import networkx as nx
 import os
 import argparse
@@ -242,8 +241,8 @@ class spiceParser:
                 modified_ports.append(net_name)
 
             if node["inst_type"] in self.subckts:
-                flatDesign.extend(self._flatten_circuit(node["inst_type"],subckt_inst+node["inst"]+'|', list(modified_ports))
-                )
+                flatDesign.extend(self._flatten_circuit(node["inst_type"], subckt_inst+node["inst"]+'|', list(modified_ports))
+                                  )
             else:
                 flat_node = {"inst": subckt_inst+subckt_name+"_"+node["inst"],
                              "inst_type": node["inst_type"],
@@ -328,21 +327,15 @@ def _write_circuit_graph(out_dir, data_type, filename, graph):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description="directory path for input circuits")
-    parser.add_argument("-d", "--input_zip", type=str)
+    parser.add_argument("-d", "--input_dir", type=str)
     parser.add_argument("-flat", "--flat", type=int, default=1)
     args = parser.parse_args()
-    spice_files = args.input_zip
-    output_dir = os.path.dirname(spice_files) + '/graphs'
-    output_path = spice_files.split(".")[0]
-    assert not os.path.exists(
-        output_path), f"please delete existing directory {output_path}"
+    spice_dir = args.input_dir
+    output_dir = os.path.dirname(spice_dir) + '/graphs'
     assert not os.path.exists(
         output_dir), f"please delete existing directory {output_dir}"
-    with ZipFile(spice_files, 'r') as zip:
-        # extract all files
-        zip.extractall(os.path.dirname(output_path))
-    for data_type in ['train', 'test', 'valid']:
-        split_dir = output_path + '/' + data_type
+    for data_type in ['lna','mixer','oscillator']:
+        split_dir = spice_dir + '/' + data_type
         assert os.path.exists(split_dir), f"No {data_type} data found"
         for netlist in os.listdir(split_dir):
             if netlist.endswith('.sp'):
@@ -353,6 +346,3 @@ if __name__ == '__main__':
                     _write_circuit_graph(output_dir, data_type, netlist.split('.')[0], circuit_graph)
             else:
                 print("Not a valid file type (.sp).Skipping this file")
-    #Remove extracted zip file
-    shutil.rmtree(output_path)
-

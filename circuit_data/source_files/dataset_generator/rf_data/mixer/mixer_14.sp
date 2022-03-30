@@ -19,7 +19,7 @@
 .PARAM
 
 *.GLOBAL vdd!
-+        gnd!
+*+        gnd!
 
 *.PIN vdd!
 *+    gnd!
@@ -30,8 +30,7 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 14_single_helper_current_source Vbiasn1 Vbiasn2 Vbiasp Voutn Voutp Vrf
-+ vlon vlop
+.SUBCKT 14_single_helper_current_source Vbiasn1 Vbiasn2 Vbiasp Voutn Voutp Vrf vlon vlop
 *.PININFO Vbiasn1:I Vbiasn2:I Vbiasp:I Vrf:I vlon:I vlop:I Voutn:O Voutp:O
 MM0 Voutn net020 net21 gnd! nmos_rvt w=27n l=20n nfin=1
 MM1 Voutp net017 net21 gnd! nmos_rvt w=27n l=20n nfin=1
@@ -40,12 +39,12 @@ CC3 vlon net020 1p
 CC0 net24 gnd! 1p
 CC2 vlop net017 1p
 CC1 Vrf net25 1p
-RR5 net017 Vbiasn2 1K
-RR6 net020 Vbiasn2 1K
-RR2 Voutp vdd! 1K
-RR0 Voutn vdd! 1K
-RR4 net25 Vbiasn1 1K
+RR5 net017 Vbiasn2 res=1K
+RR6 net020 Vbiasn2 res=1K
+RR2 Voutp vdd! res=1K
+RR0 Voutn vdd! res=1K
+RR4 net25 Vbiasn1 res=1K
 MM3 net24 Vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
-LL0 net21 net24 1n
+LL0 net21 net24 ind=1n
 .ENDS
 

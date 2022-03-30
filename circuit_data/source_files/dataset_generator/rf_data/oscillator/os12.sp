@@ -3,7 +3,7 @@
 *
 * Library Name:  oscillator
 * Top Cell Name:
-+ cross_coupled_oscillator_tail_current_variable_cap_trim_cap_varactor
+* + cross_coupled_oscillator_tail_current_variable_cap_trim_cap_varactor
 * View Name:     schematic
 * Netlisted on:  Jul  5 12:21:53 2019
 ************************************************************************
@@ -20,7 +20,7 @@
 .PARAM
 
 *.GLOBAL vdd!
-+        gnd!
+*+        gnd!
 
 *.PIN vdd!
 *+    gnd!
@@ -31,8 +31,7 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT cross_coupled_oscillator_tail_current_variable_cap_trim_cap_varactor Vbias_a Vbias_b Vbiasp Vcontrol Vdigital Vdigital_a Vdigital_b
-+ Vidgital Voutn Voutp
+.SUBCKT cross_coupled_oscillator_tail_current_variable_cap_trim_cap_varactor Vbias_a Vbias_b Vbiasp Vcontrol Vdigital Vdigital_a Vdigital_b Vidgital Voutn Voutp
 *.PININFO Vbias_a:I Vbias_b:I Vbiasp:I Vcontrol:I Vdigital:I Vidgital:I
 *.PININFO Vdigital_a:O Vdigital_b:O Voutn:O Voutp:O
 MM4 net022 Vdigital_a gnd! gnd! nmos_rvt w=27n l=20n nfin=1
@@ -43,13 +42,12 @@ MM0 Voutp Voutn net15 gnd! nmos_rvt w=27n l=20n nfin=1
 MM7 net10 net10 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM2 net15 net10 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM6 net10 Vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
-RR3 Vbias_b net17 5K
-RR2 Vbias_a net14 5K
+RR3 Vbias_b net17 res=5K
+RR2 Vbias_a net14 res=5K
 XC0 net17 Voutp Vdigital moscap_rf wr=1.6u lr=400n br=4 gr=3 m=1
 XC4 Voutn net14 Vidgital moscap_rf wr=1.6u lr=400n br=4 gr=3 m=1
 XL0 Voutn Voutp gnd! vdd! spiral_sym_ct_mu_z w=15u nr=3 rad=60u lay=9
-+ spacing=2u gdis=50u m=1
-CC3 Voutp net022 10f
-CC5 Voutn net023 10f
+CC3 Voutp net022 cap=10f
+CC5 Voutn net023 cap=10f
 .ENDS
 

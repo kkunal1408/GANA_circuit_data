@@ -19,7 +19,7 @@
 .PARAM
 
 *.GLOBAL vdd!
-+        gnd!
+*+        gnd!
 
 *.PIN vdd!
 *+    gnd!
@@ -32,9 +32,9 @@
 
 .SUBCKT 1_CS_inductive_load Vbiasn Vin Vout
 *.PININFO Vbiasn:I Vin:I Vout:O
-LL0 vdd! Vout 2m
+LL0 vdd! Vout ind=2m
 MM0 Vout net5 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-RR0 Vbiasn net5 5K
-CC1 Vin net5 10f
+RR0 Vbiasn net5 res=5K
+CC1 Vin net5 cap=10f
 .ENDS
 

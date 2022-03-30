@@ -36,7 +36,7 @@ CC2 vifp gnd! 1p
 CC4 vifm gnd! 1p
 CC3 vlop net42 1p
 CC1 net40 vlom 1p
-RR0 net40 Vbiasn 1K
-RR1 net42 Vbiasn 1K
+RR0 net40 Vbiasn res=1K
+RR1 net42 Vbiasn res=1K
 .ENDS
 

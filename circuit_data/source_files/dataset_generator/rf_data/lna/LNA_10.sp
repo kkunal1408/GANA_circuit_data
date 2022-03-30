@@ -19,7 +19,7 @@
 .PARAM
 
 *.GLOBAL vdd!
-+        gnd!
+*+        gnd!
 
 *.PIN vdd!
 *+    gnd!
@@ -35,11 +35,11 @@
 CC3 net49 gnd! 1p
 CC0 vdd! Vout 1p
 CC1 Vin net49 1p
-RR0 Vout vdd! 1K
-RR2 gnd! net49 1K
+RR0 Vout vdd! res=1K
+RR2 gnd! net49 res=1K
 MM0 Vout Vbiasn2 net51 gnd! nmos_rvt w=27n l=20n nfin=1
 MM1 net51 Vbiasn1 net49 gnd! nmos_rvt w=27n l=20n nfin=1
-LL1 net49 gnd! 1n
-LL0 vdd! Vout 1n
+LL1 net49 gnd! ind=1n
+LL0 vdd! Vout ind=1n
 .ENDS
 

@@ -19,7 +19,7 @@
 .PARAM
 
 *.GLOBAL vdd!
-+        gnd!
+*+        gnd!
 
 *.PIN vdd!
 *+    gnd!
@@ -36,9 +36,9 @@ MM1 Voutn Voutp gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM0 Voutp Voutn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 CC1 Voutp net10 1p
 CC0 Voutn net11 1p
-LL1 Voutn Voutp 1n
-LL0 net11 net10 1n
-RR1 vdd! Voutn 1K
-RR0 vdd! Voutp 1K
+LL1 Voutn Voutp ind=1n
+LL0 net11 net10 ind=1n
+RR1 vdd! Voutn res=1K
+RR0 vdd! Voutp res=1K
 .ENDS
 
