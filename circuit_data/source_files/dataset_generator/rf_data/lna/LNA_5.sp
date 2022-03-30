@@ -33,9 +33,9 @@
 .SUBCKT 5_CG_current_source Vbiasn1 Vbiasn2 Vin Vout
 *.PININFO Vbiasn1:I Vbiasn2:I Vin:I Vout:O
 CC1 Vin net13 1p
-RR2 gnd! net13 1K $[RP]
+RR2 gnd! net13 1K
 MM0 Vout Vbiasn2 net13 gnd! nmos_rvt w=27n l=20n nfin=1
 MM1 net13 Vbiasn1 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-LL0 vdd! Vout 1n $[LP]
+LL0 vdd! Vout 1n
 .ENDS
 

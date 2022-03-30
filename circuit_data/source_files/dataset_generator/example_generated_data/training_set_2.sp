@@ -32,7 +32,7 @@
 
 .SUBCKT CR1_1 Vbiasn
 *.PININFO Vbiasn:O
-RRF vdd! Vbiasn 1K $[RP]
+RRF vdd! Vbiasn 1K
 MM0 Vbiasn Vbiasn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 .ENDS
 
@@ -46,7 +46,7 @@ MM0 Vbiasn Vbiasn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 *.PININFO Vbiasp:I Vin:I Vout:O
 MM1 Vout Vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
 MM0 Vout net6 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-RRF Vout net6 1K $[RP]
+RRF Vout net6 1K
 CC1 Vin net6 1p
 .ENDS
 

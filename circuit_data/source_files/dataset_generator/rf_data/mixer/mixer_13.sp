@@ -39,11 +39,11 @@ MM2 net21 net24 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 CC3 vlon net018 1p
 CC2 vlop net016 1p
 CC1 Vrf net24 1p
-RR5 net016 Vbiasn2 1K $[RP]
-RR6 net018 Vbiasn2 1K $[RP]
-RR2 Voutp vdd! 1K $[RP]
-RR0 Voutn vdd! 1K $[RP]
-RR4 net24 Vbiasn1 1K $[RP]
+RR5 net016 Vbiasn2 1K
+RR6 net018 Vbiasn2 1K
+RR2 Voutp vdd! 1K
+RR0 Voutn vdd! 1K
+RR4 net24 Vbiasn1 1K
 MM3 net21 Vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
 .ENDS
 

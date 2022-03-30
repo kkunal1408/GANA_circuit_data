@@ -30,23 +30,22 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 5_output_combining_single_balanced_sampling_mixer Vbiasn Vinn Vinp
-+ vlom vlop
-*.PININFO Vbiasn:I Vinn:I Vinp:I vlom:I vlop:I
-RR5 Vbiasn net024 1K $[RP]
-RR4 Vbiasn net023 1K $[RP]
-RR3 Vbiasn net026 1K $[RP]
-RR1 Vbiasn net025 1K $[RP]
-RR0 net021 vdd! 1K $[RP]
-RR2 net020 vdd! 1K $[RP]
-MM7 Vinp net026 net016 gnd! nmos_rvt w=27n l=20n nfin=1
-MM6 Vinp net023 net017 gnd! nmos_rvt w=27n l=20n nfin=1
-MM5 Vinn net025 net45 gnd! nmos_rvt w=27n l=20n nfin=1
-MM4 Vinn net024 net43 gnd! nmos_rvt w=27n l=20n nfin=1
-MM3 net021 net017 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-MM2 net020 net016 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-MM1 net020 net43 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-MM0 net021 net45 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+.SUBCKT 5_output_combining_single_balanced_sampling_mixer Vbiasn Vrfn Vrfp vlom vlop Voutn Voutp
+*.PININFO Vbiasn:I Vrfn:I Vrfp:I vlom:I vlop:I
+RR5 Vbiasn net024 1K
+RR4 Vbiasn net023 1K
+RR3 Vbiasn net026 1K
+RR1 Vbiasn net025 1K
+RR0 Voutn vdd! 1K
+RR2 Voutp vdd! 1K
+MM7 Vrfp net026 net016 gnd! nmos_rvt w=27n l=20n nfin=1
+MM6 Vrfp net023 net017 gnd! nmos_rvt w=27n l=20n nfin=1
+MM5 Vrfn net025 net45 gnd! nmos_rvt w=27n l=20n nfin=1
+MM4 Vrfn net024 net43 gnd! nmos_rvt w=27n l=20n nfin=1
+MM3 Voutn net017 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+MM2 Voutp net016 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+MM1 Voutp net43 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+MM0 Voutn net45 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 CC7 vlop net023 1p
 CC6 net026 vlom 1p
 CC5 vlop net024 1p

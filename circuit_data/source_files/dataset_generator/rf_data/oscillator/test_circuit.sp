@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  oscillator
 * Top Cell Name: test_circuit
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -36,7 +36,6 @@ XC3 Vtune Voutp Vdigital moscap_rf wr=1.6u lr=400n br=4 gr=3 m=1
 XC2 Voutn Vtune Vdigital moscap_rf wr=1.6u lr=400n br=4 gr=3 m=1
 MM1 Voutn Voutp gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM0 Voutp Voutn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-XL0 Voutp Voutn gnd! vdd! spiral_sym_ct_mu_z w=15u nr=3 rad=60u lay=9 
-+ spacing=2u gdis=50u m=1
+XL0 Voutp Voutn gnd! vdd! spiral_sym_ct_mu_z w=15u nr=3 rad=60u lay=9
 .ENDS
 

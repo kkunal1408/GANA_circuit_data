@@ -41,10 +41,10 @@ CC4 vlon net017 1p
 CC3 Voutp gnd! 1p
 CC0 Voutn gnd! 1p
 CC1 Vrf net20 1p
-RR6 net017 Vbiasn2 1K $[RP]
-RR2 Voutp vdd! 1K $[RP]
-RR0 Voutn vdd! 1K $[RP]
-RR5 net015 Vbiasn2 1K $[RP]
-RR4 net20 Vbiasn1 1K $[RP]
+RR6 net017 Vbiasn2 1K
+RR2 Voutp vdd! 1K
+RR0 Voutn vdd! 1K
+RR5 net015 Vbiasn2 1K
+RR4 net20 Vbiasn1 1K
 .ENDS
 

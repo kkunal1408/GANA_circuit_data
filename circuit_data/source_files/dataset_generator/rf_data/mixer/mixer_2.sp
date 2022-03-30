@@ -38,11 +38,11 @@ CC2 vlom net72 1p
 CC0 net70 vlop 1p
 CC3 vlop net75 1p
 CC1 net73 vlom 1p
-RR7 gnd! vifp 1K $[RP]
-RR5 net70 Vbiasn 1K $[RP]
-RR4 net72 Vbiasn 1K $[RP]
-RR2 vifm gnd! 1K $[RP]
-RR0 net73 Vbiasn 1K $[RP]
-RR1 net75 Vbiasn 1K $[RP]
+RR7 gnd! vifp 1K
+RR5 net70 Vbiasn 1K
+RR4 net72 Vbiasn 1K
+RR2 vifm gnd! 1K
+RR0 net73 Vbiasn 1K
+RR1 net75 Vbiasn 1K
 .ENDS
 

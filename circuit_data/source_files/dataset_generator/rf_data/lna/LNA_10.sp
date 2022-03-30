@@ -30,20 +30,16 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 10_CG_cascode_stage_full Vbiasp Vin Vout
+.SUBCKT 10_CG_cascode_stage_full Vbiasn1 Vbiasn2 Vin Vout
 *.PININFO Vbiasp:I Vin:I Vout:O
 CC3 net49 gnd! 1p
 CC0 vdd! Vout 1p
-CC2 net55 gnd! 1p
 CC1 Vin net49 1p
-RR0 Vout vdd! 1K $[RP]
-RR2 gnd! net49 1K $[RP]
-RR1 gnd! net52 1K $[RP]
-MM3 net55 Vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
-MM2 net52 net55 net55 gnd! pmos_rvt w=27n l=20n nfin=1
-MM0 Vout vdd! net51 gnd! nmos_rvt w=27n l=20n nfin=1
-MM1 net51 net55 net49 gnd! nmos_rvt w=27n l=20n nfin=1
-LL1 net49 gnd! 1n $[LP]
-LL0 vdd! Vout 1n $[LP]
+RR0 Vout vdd! 1K
+RR2 gnd! net49 1K
+MM0 Vout Vbiasn2 net51 gnd! nmos_rvt w=27n l=20n nfin=1
+MM1 net51 Vbiasn1 net49 gnd! nmos_rvt w=27n l=20n nfin=1
+LL1 net49 gnd! 1n
+LL0 vdd! Vout 1n
 .ENDS
 

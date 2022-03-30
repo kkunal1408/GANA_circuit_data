@@ -40,12 +40,12 @@ CC3 vlon net020 1p
 CC0 net24 gnd! 1p
 CC2 vlop net017 1p
 CC1 Vrf net25 1p
-RR5 net017 Vbiasn2 1K $[RP]
-RR6 net020 Vbiasn2 1K $[RP]
-RR2 Voutp vdd! 1K $[RP]
-RR0 Voutn vdd! 1K $[RP]
-RR4 net25 Vbiasn1 1K $[RP]
+RR5 net017 Vbiasn2 1K
+RR6 net020 Vbiasn2 1K
+RR2 Voutp vdd! 1K
+RR0 Voutn vdd! 1K
+RR4 net25 Vbiasn1 1K
 MM3 net24 Vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
-LL0 net21 net24 1n $[LP]
+LL0 net21 net24 1n
 .ENDS
 

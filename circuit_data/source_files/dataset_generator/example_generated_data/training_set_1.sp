@@ -32,7 +32,7 @@
 
 .SUBCKT CR1_1 Vbiasn
 *.PININFO Vbiasn:O
-RRF vdd! Vbiasn 1K $[RP]
+RRF vdd! Vbiasn 1K
 MM0 Vbiasn Vbiasn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 .ENDS
 
@@ -44,9 +44,9 @@ MM0 Vbiasn Vbiasn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 
 .SUBCKT 1_CS_inductive_load Vbiasp Vin Vout
 *.PININFO Vbiasp:I Vin:I Vout:O
-LL0 vdd! Vout 2m $[LP]
+LL0 vdd! Vout 2m
 MM0 Vout net5 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-RR0 Vbiasp net5 5K $[RP]
+RR0 Vbiasp net5 5K
 CC1 Vin net5 10f
 .ENDS
 

@@ -54,7 +54,6 @@ class BasicElement:
 
     def Transistor(self):
         #transistor: m5 net5 phi2 0 0 nmos_rvt w=81e-9 l=20e-9 nfin=3
-        #print("querying transistor",self.line)
         [inst, drain, gate, source, body, inst_type]=self.line.strip().split()[0:6]
         edges = [drain, gate, source]
         edge_weight = [1,2,4]

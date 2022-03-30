@@ -19,7 +19,7 @@
 .PARAM
 
 *.GLOBAL vdd!
-+        gnd!
+* +        gnd!
 
 *.PIN vdd!
 *+    gnd!
@@ -33,11 +33,11 @@
 .SUBCKT 9_single_balanced_active_mixer Vbiasn1 Vbiasn2 Voutn Voutp Vrf vlon
 + vlop
 *.PININFO Vbiasn1:I Vbiasn2:I Vrf:I vlon:I vlop:I Voutn:O Voutp:O
-RR6 net016 Vbiasn2 1K $[RP]
-RR4 net19 Vbiasn1 1K $[RP]
-RR5 net014 Vbiasn2 1K $[RP]
-RR2 Voutp vdd! 1K $[RP]
-RR0 Voutn vdd! 1K $[RP]
+RR6 net016 Vbiasn2 1K
+RR4 net19 Vbiasn1 1K
+RR5 net014 Vbiasn2 1K
+RR2 Voutp vdd! 1K
+RR0 Voutn vdd! 1K
 MM2 net13 net19 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM1 Voutp net014 net13 gnd! nmos_rvt w=27n l=20n nfin=1
 MM0 Voutn net016 net13 gnd! nmos_rvt w=27n l=20n nfin=1

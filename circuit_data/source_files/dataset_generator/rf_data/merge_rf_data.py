@@ -16,16 +16,16 @@ elif os.path.exists("./LOG/read_netlist.log"):
 
 logging.basicConfig(filename='./LOG/read_netlist.log', level=logging.DEBUG)
 
-OTA_DIR = "OTA"
-BIAS_DIR = "BIAS"
-LG_DIR = "Local_generation"
+LNA_DIR = "lna"
+MIXER_DIR = "mixer"
+OSC_DIR = "oscillator"
 
-OTA_NETLIST = os.listdir(OTA_DIR)
-LG_NETLIST = os.listdir(LG_DIR)
-BIAS_NETLIST = os.listdir(BIAS_DIR)
+LNA_NETLIST = os.listdir(LNA_DIR)
+MIXER_NETLIST = os.listdir(MIXER_DIR)
+OSC_NETLIST = os.listdir(OSC_DIR)
 
 
-class create_OTA_connection:
+class create_receiver_connection:
 
     def __init__(self,line):
         self.line =line

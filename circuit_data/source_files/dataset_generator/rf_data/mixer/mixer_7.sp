@@ -42,11 +42,11 @@ MM4 net36 net38 net30 gnd! nmos_rvt w=27n l=20n nfin=1
 MM1 Voutp net30 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM0 Voutn net29 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM5 net36 net39 net29 gnd! nmos_rvt w=27n l=20n nfin=1
-RR4 net40 net36 1K $[RP]
-RR2 Voutp vdd! 1K $[RP]
-RR0 Voutn vdd! 1K $[RP]
-RR1 net38 net30 1K $[RP]
-RR3 net39 net29 1K $[RP]
+RR4 net40 net36 1K
+RR2 Voutp vdd! 1K
+RR0 Voutn vdd! 1K
+RR1 net38 net30 1K
+RR3 net39 net29 1K
 MM3 net40 Vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
 .ENDS
 

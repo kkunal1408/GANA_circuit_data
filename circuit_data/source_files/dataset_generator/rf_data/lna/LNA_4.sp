@@ -33,9 +33,9 @@
 .SUBCKT 4_CG_stage Vbiasn Vin Vout
 *.PININFO Vbiasn:I Vin:I Vout:O
 MM0 Vout Vbiasn net10 gnd! nmos_rvt w=27n l=20n nfin=1
-LL0 vdd! Vout 1n $[LP]
-RRb gnd! net10 1K $[RP]
-RR1 vdd! Vout 1K $[RP]
+LL0 vdd! Vout 1n
+RRb gnd! net10 1K
+RR1 vdd! Vout 1K
 CC1 Vin net10 1p
 .ENDS
 

@@ -34,9 +34,9 @@ MM1 Vrf net14 vifp gnd! nmos_rvt w=27n l=20n nfin=1
 MM0 Vrf net16 vifm gnd! nmos_rvt w=27n l=20n nfin=1
 CC3 vlop net16 1p
 CC1 net14 vlom 1p
-RR3 gnd! vifp 1K $[RP]
-RR2 vifm gnd! 1K $[RP]
-RR0 net14 Vbiasn 1K $[RP]
-RR1 net16 Vbiasn 1K $[RP]
+RR3 gnd! vifp 1K
+RR2 vifm gnd! 1K
+RR0 net14 Vbiasn 1K
+RR1 net16 Vbiasn 1K
 .ENDS
 

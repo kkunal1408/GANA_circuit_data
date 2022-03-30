@@ -19,7 +19,7 @@
 .PARAM
 
 *.GLOBAL gnd!
-+        vdd!
+* +        vdd!
 
 *.PIN gnd!
 *+    vdd!
@@ -34,10 +34,10 @@
 *.PININFO Vbiasn1:I Vbiasn2:I Vin:I Vout:O
 CC0 vdd! Vout 1p
 CC1 Vin net17 1p
-RR0 Vout vdd! 1K $[RP]
-RR2 gnd! net17 1K $[RP]
+RR0 Vout vdd! 1K
+RR2 gnd! net17 1K
 MM1 net21 Vbiasn1 net17 gnd! nmos_rvt w=27n l=20n nfin=1
 MM0 Vout Vbiasn2 net21 gnd! nmos_rvt w=27n l=20n nfin=1
-LL0 vdd! Vout 1n $[LP]
+LL0 vdd! Vout 1n
 .ENDS
 

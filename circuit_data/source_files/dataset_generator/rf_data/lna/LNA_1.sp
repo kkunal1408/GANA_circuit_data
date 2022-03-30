@@ -32,9 +32,9 @@
 
 .SUBCKT 1_CS_inductive_load Vbiasn Vin Vout
 *.PININFO Vbiasn:I Vin:I Vout:O
-LL0 vdd! Vout 2m $[LP]
+LL0 vdd! Vout 2m
 MM0 Vout net5 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-RR0 Vbiasn net5 5K $[RP]
+RR0 Vbiasn net5 5K
 CC1 Vin net5 10f
 .ENDS
 

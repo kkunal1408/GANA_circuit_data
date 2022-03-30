@@ -1,4 +1,4 @@
-# DATA for Approximate matching of subcircuit using Graph Convolution Network for node classification
+# Data for GANA
 Base code has been taken from https://github.com/mdeff/cnn_graph
 The code in this repository reads multiple OTA circuits graphs from train_graphs directory.
 It processses all individual graphs to prepare inputs for Graph convolution network.
@@ -11,7 +11,7 @@ It processses all individual graphs to prepare inputs for Graph convolution netw
 Since Graph Convolution network need one graph as input, all OTA circuit graphs has been merged in block diagonal fashion.
 
 
-# to preprocess the data use:
+# Creating the input data for GANA:
 To create graph from spice files:
 
 ```
