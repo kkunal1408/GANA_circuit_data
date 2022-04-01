@@ -42,14 +42,14 @@ m10 net64 phi1 net62 vss nmos_rvt w=270e-9 l=20e-9 nfin=6 nf=2
 m12 net60 phi1 vinp vss nmos_rvt w=270e-9 l=20e-9 nfin=6 nf=2
 m14 voutp phi1 net68 vss nmos_rvt w=270e-9 l=20e-9 nfin=6 nf=2
 xi0 id vdd net64 net66 vss vbiasn vbiasp1 vbiasp2 voutn voutp telescopic_ota
-c9 voutp vss 60e-15
-c8 voutn vss 60e-15
-c7 net62 net68 30e-15
-c6 net64 voutp 60e-15
-c5 vinn net64 30e-15
-c4 net60 net62 60e-15
-c3 net66 voutn 60e-15
-c2 vinp net66 30e-15
-c1 net63 net67 30e-15
-c0 net72 net63 60e-15
+c9 voutp vss cap=60e-15
+c8 voutn vss cap=60e-15
+c7 net62 net68 cap=30e-15
+c6 net64 voutp cap=60e-15
+c5 vinn net64 cap=30e-15
+c4 net60 net62 cap=60e-15
+c3 net66 voutn cap=60e-15
+c2 vinp net66 cap=30e-15
+c1 net63 net67 cap=30e-15
+c0 net72 net63 cap=60e-15
 .ends switched_capacitor_filter

@@ -194,7 +194,7 @@ class spiceParser:
             logging.info('FOUND 4t inductor')
             logging.debug("inductance:" + line)
             device = element.Inductor_4t()
-        elif line.strip().lower().startswith('x'):
+        elif line.strip().lower().startswith('xi'):
             if ' / ' in line:
                 line = line.replace(' / ', ' ')
             elif '(' in line:
@@ -334,7 +334,7 @@ if __name__ == '__main__':
     output_dir = os.path.dirname(spice_dir) + '/graphs'
     assert not os.path.exists(
         output_dir), f"please delete existing directory {output_dir}"
-    for data_type in ['lna','mixer','oscillator']:
+    for data_type in ['MIMO','wideband_mixer_RX', 'switched_capacitor_filter', 'phased_array_netlist']:
         split_dir = spice_dir + '/' + data_type
         assert os.path.exists(split_dir), f"No {data_type} data found"
         for netlist in os.listdir(split_dir):
