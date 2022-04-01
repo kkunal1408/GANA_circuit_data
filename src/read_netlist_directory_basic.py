@@ -334,7 +334,14 @@ if __name__ == '__main__':
     output_dir = os.path.dirname(spice_dir) + '/graphs'
     assert not os.path.exists(
         output_dir), f"please delete existing directory {output_dir}"
-    for data_type in ['MIMO','wideband_mixer_RX', 'switched_capacitor_filter', 'phased_array_netlist']:
+    if 'individual' in spice_dir:
+        data_types = ['MIMO', 'wideband_mixer_RX',
+            'switched_capacitor_filter', 'phased_array_netlist']
+    elif 'ota' in spice_dir.lower():
+        data_types = ['bias', 'local_generation', 'ota_unbiased']
+    elif 'rf_data' in spice_dir.lower():
+        data_types = ['lna','mixer', 'oscillator']
+    for data_type in data_types:
         split_dir = spice_dir + '/' + data_type
         assert os.path.exists(split_dir), f"No {data_type} data found"
         for netlist in os.listdir(split_dir):
