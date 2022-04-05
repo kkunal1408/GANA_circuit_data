@@ -8,6 +8,7 @@ Created on Tue Oct 22 21:06:36 2019
 
 import os
 import logging
+from pathlib import Path
 
 if not os.path.exists("./LOG"):
     os.mkdir("./LOG")
@@ -16,171 +17,86 @@ elif os.path.exists("./LOG/read_netlist.log"):
 
 logging.basicConfig(filename='./LOG/read_netlist.log', level=logging.DEBUG)
 
-LNA_DIR = "lna"
-MIXER_DIR = "mixer"
-OSC_DIR = "oscillator"
+LNA_DIR = Path("./lna")
+MIXER_DIR = Path("./mixer")
+OSC_DIR = Path("./oscillator")
 
-LNA_NETLIST = os.listdir(LNA_DIR)
-MIXER_NETLIST = os.listdir(MIXER_DIR)
-OSC_NETLIST = os.listdir(OSC_DIR)
+LNA_NETLIST = list(LNA_DIR.glob('*.sp'))
+MIXER_NETLIST = list(MIXER_DIR.glob('*.sp'))
+OSC_NETLIST = list(OSC_DIR.glob('*.sp'))
+class module():
+    def __init__(self):
+        self.module_def = []
+        self.pins = []
+        self.name = ''
 
-
-class create_receiver_connection:
-
-    def __init__(self,line):
-        self.line =line
-        self.bias_ports =[]
-        self.LG_connect_pins =[]
-        self.insts = []
-        self.LG_input = None
-        self.ota_inst()
-    def ota_inst(self):
-        words=line.split()
-        for idx, port in enumerate(words):
-            if 'bias' in port:
-                words[idx]="LG_"+port
-                self.bias_ports.append("LG_"+port)
-        self.insts.append(  "\nxiota "+ " ".join(words[2:]) + \
-                                " "+ words[1])
-    def LG_pins(self,lg_pins,lg_type):
-
-        if "LG_Vbiasn2" in  self.bias_ports:
-            if "Vbiasn2" not in lg_pins:
-                logging.error("Vbiasn2 not in lg_pins:%s,%s",self.insts[0],lg_type)
-                return 0
-        elif "LG_Vbiasp2" in  self.bias_ports:
-            if "Vbiasp2" not in lg_pins:
-                logging.error("Vbiasp2 not in lg_pins:%s,%s",self.insts[0],lg_type)
-                return 0
-        elif "LG_Vbiasn2" not in  self.bias_ports:
-            if "Vbiasn2" in lg_pins:
-                logging.error("Vbiasn2 in lg_pins:%s,%s",self.insts[0],lg_type)
-                return 0
-        elif "LG_Vbiasp2" not in  self.bias_ports:
-            if "Vbiasp2" in lg_pins:
-                logging.error("Vbiasp2 in lg_pins:%s,%s",self.insts[0],lg_type)
-                return 0
-        if "LG_Vbiasn1" not in  self.bias_ports:
-            if "Vbiasn1" in lg_pins:
-                logging.error("Vbiasn1 in lg_pins:%s,%s",self.insts[0],lg_type)
-                return 0
-        elif "LG_Vbiasp1" not in  self.bias_ports:
-            if "Vbiasp1" in lg_pins:
-                logging.error("Vbiasp1 in lg_pins:%s,%s",self.insts[0],lg_type)
-                return 0
-        words=lg_pins.split()[1:]
-        added = 0
-        for idx, port in enumerate(words):
-            if 'bias' in port and port.endswith('O'):
-                check_port = "LG_"+port.replace(':O','')
-                words[idx] = check_port
-                if check_port in self.bias_ports:
-                    self.LG_connect_pins.append(check_port)
-                    added = 1
-            elif port.endswith(':I') and 'ias' in port:
-                self.LG_input = port.replace(':I','')
-                words[idx]= self.LG_input
-            else:
-                words[idx] = port.replace(':I','').replace(':O','')
-
-        if added ==1:
-            self.insts.append("\nxi"+lg_type+" " +" ".join(words) +" "+lg_type)
-            return 1
-        else:
-            return 0
-
-    def BIAS_pins(self,bias_line):
-        words=bias_line.split()
-        for idx, port in enumerate(words):
-            port = port.replace("Vbias","Bias")
-            words[idx] = port
-            if self.LG_input ==port:
-                self.insts.append("\nxib"+words[1]+" "+ \
-                                  " ".join(words[2:])+ " "+words[1])
-                return 1
-
-        return 0
-
-def read_LG_bias(file, connect):
-    BIAS_lines=[]
-    found=0
-    if 'LG' in file:
-        FLAG =0
-        with open(file, "r") as file:
-            name =""
+    def read(self, file_path):
+        with open(file_path, "r") as file:
+            FLAG = 0
             for line in file:
-                if ".SUBCKT" in line:
-                    name = line.split()[1]
-                    FLAG=1
-                elif ".PININFO" in line:
-                    found = connect.LG_pins(line,name)
-                elif ".ENDS" in line:
-                    FLAG=0
-                    BIAS_lines.append(line)
-                if FLAG==1:
-                    BIAS_lines.append(line)
-    if found:
-        return BIAS_lines
-    else:
-        return None
+                if 'SUBCKT' in line.upper():
+                    self.name = line.split()[1]
+                    self.pins = line.split()[2:]
+                    self.module_def.append(line.strip())
+                    FLAG = 1
+                elif '.ENDS' in line.upper():
+                    FLAG = 0
+                    self.module_def.append(line)
+                elif FLAG:
+                    self.module_def.append(line.strip())
+    def write(self):
+        os.makedirs('combined', exist_ok=True)
+        fo = open(f"combined/{self.name}.sp", "w")
+        for line in self.module_def:
+            fo.write(line)
+            fo.write('\n')
+        fo.close
 
-def read_bias(file, connect):
-    BIAS_lines=[]
-    found=0
-    if file.endswith('.sp'):
-        FLAG =0
-        with open(file, "r") as file:
-            for line in file:
-                if ".SUBCKT" in line:
-                    found=connect.BIAS_pins(line)
-                    FLAG=1
-                elif ".ENDS" in line:
-                    FLAG=0
-                    BIAS_lines.append(line)
-                if FLAG==1:
-                    BIAS_lines.append(line)
-    if found:
-        return BIAS_lines
-    else:
-        return None
 
-for ON in OTA_NETLIST:
-    if "_" in ON:
-        with open(OTA_DIR+"/"+ON, "r") as file:
-            OTA_lines = []
-            for line in file:
-                if ".SUBCKT" in line:
-                    connect = create_OTA_connection(line)
-                OTA_lines.append(line)
+count = 0
 
-        for LN in LG_NETLIST:
-            for BN in BIAS_NETLIST:
-                LG_lines =[]
-                BG_lines =[]
-                connect.insts=[connect.insts[0]]
-                check_lg = read_LG_bias(LG_DIR+"/"+LN, connect)
-                if check_lg:
-                    check_bias = read_bias(BIAS_DIR+"/"+BN, connect)
-                    if check_bias:
-                        print("Creating combination of: " +ON + ", " +LN + ", "+ BN)
-                        fo= open("FULL_OTA/"+ON+"_"+LN+"_"+BN,"w")
-                        LG_lines = LG_lines+check_lg
-                        BG_lines = BG_lines + check_bias
-                        for line in OTA_lines:
-                            fo.write(line)
-                        fo.write("\n")
-                        for line in LG_lines:
-                            fo.write(line)
-                        fo.write("\n")
-                        for line in BG_lines:
-                            fo.write(line)
-                        fo.write("\n")
+class create_combination:
 
-                        for connect_line in connect.insts:
-                            fo.write(connect_line)
+    def __init__(self, module1, module2):
+        self.module1 = module1
+        self.module2 = module2
+        self.merged_module = module()
+        self.merged_module.module_def.extend(module1.module_def)
+        self.merged_module.module_def.extend(module2.module_def)
+        self.rename_bias()
+    def rename_bias(self):
+        self.module1.pins = [pin+'m1' for pin in self.module1.pins
+                            if 'bias' in pin.lower()]
+        self.module2.pins = [pin+'m2' for pin in self.module2.pins
+                             if 'bias' in pin.lower()]
 
-                        fo.write("\n.END")
-                        fo.close
+    def merge_module(self, write=False):
+        global count
+        count += 1
+        self.merged_module.name = f"{count}_{self.module1.name}_{self.module2.name}"
+        self.merged_module.pins= set(self.module1.pins) | set(self.module2.pins)
+        def_line = f'.SUBCKT {self.merged_module.name} {" ".join(self.merged_module.pins)}'
+        inst1 = 'XI0 ' + ' '.join(self.module1.pins) + self.module1.name
+        inst2 = 'XI1 ' + ' '.join(self.module2.pins) + self.module2.name
+        end_line = f'.ENDS {self.merged_module.name}'
+        self.merged_module.module_def.append(def_line)
+        self.merged_module.module_def.append(inst1)
+        self.merged_module.module_def.append(inst2)
+        self.merged_module.module_def.append(end_line)
+        if write:
+            self.merged_module.write()
 
+
+for file1 in LNA_NETLIST:
+    module1 = module()
+    module1.read(file1)
+    print(f"LNA: {file1}")
+    for file2 in MIXER_NETLIST:
+        module2 = module()
+        module2.read(file2)
+        print(f"merging files {file1} {file2}")
+        comb = create_combination(module1, module2)
+        comb.merge_module(True)
+        break
 
 

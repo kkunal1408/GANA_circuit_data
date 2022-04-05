@@ -1,13 +1,14 @@
 **Author: Kishor Kunal, kunal001@umn.edu
+**why 12 tramsistors?
 .subckt bottom_plate_4path_mixer_diff_end clk0 clk90 clk180 clk270 _net1 _net0 vcmbias vdda_q
 c7 n5 _net0 cap=13pF
-c3 n1 _net1 cap=13pF
 c8 n6 _net0 cap=13pF
 c9 n7 _net0 cap=13pF
-c5 n3 _net1 cap=13pF
-c4 n2 _net1 cap=13pF
-c6 n4 _net1 cap=13pF
 c10 n8 _net0 cap=13pF
+c3 n1 _net1 cap=13pF
+c4 n2 _net1 cap=13pF
+c5 n3 _net1 cap=13pF
+c6 n4 _net1 cap=13pF
 M0 n1 clk0 n5 vcmbias nmos_rf lr=60e-9 wr=4e-6 nr=16
 M1 n2 clk90 n6 vcmbias nmos_rf lr=60e-9 wr=4e-6 nr=16
 M2 n3 clk180 n7 vcmbias nmos_rf lr=60e-9 wr=4e-6 nr=16

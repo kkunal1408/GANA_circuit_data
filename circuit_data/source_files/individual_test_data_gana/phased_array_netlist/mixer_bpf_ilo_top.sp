@@ -1,10 +1,3 @@
-subckt vcobuf50 INM INP OUTM OUTP VDD VSS
-    M1 (OUTP INM VSS VSS) nmos_rf lr=60n wr=2u nr=16
-    M0 (OUTM INP VSS VSS) nmos_rf lr=60n wr=2u nr=16
-    R1 (VDD OUTP ) res=1K l=12.915u w=4u m=1
-    R0 (VDD OUTM ) res=1K l=12.915u w=4u m=1
-ends vcobuf50
-
 subckt VCO_BUFF_LIN_2OUTS_v2_FINAL I625U IN OUT1 OUT2 VDD VSS
     M5 (OUT2 net11 VDD VDD) pmos_rf lr=60n wr=2u nr=16
     M15 (OUT1 net11 VDD VDD) pmos_rf lr=60n wr=2u nr=16
@@ -160,7 +153,6 @@ subckt LO_1CHNB_ALT AVDD_BPF0P5 AVDD_ILO0P5 AVDD_LO1V AVSS DIG_BPF\<3\> DIG_BPF\
     XI4 (IBUF625U\<0\> net61 LO_OUTP_INT LO_OUTP_TST AVDD_LO1V AVSS) VCO_BUFF_LIN_2OUTS_v2_FINAL
     XI5 (IBUF625U\<1\> net60 LO_OUTM_INT LO_OUTM_TST AVDD_LO1V AVSS) VCO_BUFF_LIN_2OUTS_v2_FINAL
     xI0 (DIG_BPF\<3\> DIG_BPF\<2\> DIG_BPF\<1\> DIG_BPF\<0\> LOM_BPF2G LOP_BPF2G net013 net014 AVDD_LO1V AVDD_BPF0P5 AVSS) BPF4
-    xI14 (net013 net014 net022 net021 AVDD_LO1V AVSS) vcobuf50
     xI3 (DIG_ILO\<3\> DIG_ILO\<2\> DIG_ILO\<1\> DIG_ILO\<0\> net013 net014 net60 net61 AVDD_LO1V AVDD_ILO0P5 AVSS) ILO
 ends LO_1CHNB_ALT
 
@@ -176,45 +168,35 @@ R1 (net06 net05 )res=10K
 R3 (net05 net03 )res=10K
 ends MIXER_LOAD_RES
 
-subckt Mixer IFM IFP LOM LOP MIXER_TAIL_IIN OUTM OUTP RFM RFP VDD VSS
+subckt Mixer LOM LOP  OUTM OUTP RFM RFP VDD VSS
     M35 (net051 tailm VSS VSS) nmos_rf lr=240.0n wr=3.6u nr=12
     M34 (net039 tailp VSS VSS) nmos_rf lr=240.0n wr=3.6u nr=12
-    M43 (VSS VSS VSS VSS) nmos_rf lr=60n wr=2u nr=4 m=2
-    M38 (MIXER_TAIL_IIN MIXER_TAIL_IIN VSS VSS) nmos_rf lr=240.0n wr=3.6u nr=2
-    M39 (pbias MIXER_TAIL_IIN VSS VSS) nmos_rf lr=240.0n wr=3.6u nr=2
-    M7 (IFM Oscp net039 net039) nmos_rf lr=60n wr=2u nr=4
-    M13 (IFP Oscp net051 net051) nmos_rf lr=60n wr=2u nr=4
-    M12 (IFM Oscm net051 net051) nmos_rf lr=60n wr=2u nr=4
-    M11 (IFP Oscm net039 net039) nmos_rf lr=60n wr=2u nr=4
-    M29 (VDD VDD VDD VDD) pmos_rf lr=240.0n wr=2.05u nr=8 m=2
-    M16 (pbias pbias VDD VDD) pmos_rf lr=240.0n wr=2.05u nr=8 m=2
-    M24 (IFP pbias VDD VDD) pmos_rf lr=240.0n wr=2.05u nr=32 m=2
-    M23 (IFM pbias VDD VDD) pmos_rf lr=240.0n wr=2.05u nr=32 m=2
+    * M43 (VSS VSS VSS VSS) nmos_rf lr=60n wr=2u nr=4 m=2
+    * M38 (MIXER_TAIL_IIN MIXER_TAIL_IIN VSS VSS) nmos_rf lr=240.0n wr=3.6u nr=2
+    * M39 (pbias MIXER_TAIL_IIN VSS VSS) nmos_rf lr=240.0n wr=3.6u nr=2
+    M7 (OUTM LOP net039 net039) nmos_rf lr=60n wr=2u nr=4
+    M13 (OUTP LOP net051 net051) nmos_rf lr=60n wr=2u nr=4
+    M12 (OUTM LOM net051 net051) nmos_rf lr=60n wr=2u nr=4
+    M11 (OUTP LOM net039 net039) nmos_rf lr=60n wr=2u nr=4
+    * M16 (pbias pbias VDD VDD) pmos_rf lr=240.0n wr=2.05u nr=8 m=2
+    * M24 (IFP pbias VDD VDD) pmos_rf lr=240.0n wr=2.05u nr=32 m=2
+    * M23 (IFM pbias VDD VDD) pmos_rf lr=240.0n wr=2.05u nr=32 m=2
     R29 (tailm tailp ) res=6K
-    xI12 (Oscp VDD VSS) MIXER_LOSWBIAS_RES
-    xI21 (Oscm VDD VSS) MIXER_LOSWBIAS_RES
-    R18 (IFP VDD) res=13K
-    R17 (IFM VDD) res=13K
-    R1\<1\> (VSS net040\<0\> )res=10K
-    R1\<2\> (VSS net040\<1\> )res=10K
-    R1\<3\> (VSS net040\<2\> )res=10K
-    R1\<4\> (VSS net040\<3\> )res=10K
-    C15 (LOP Oscp) cap=32pF
+    * xI12 (Oscp VDD VSS) MIXER_LOSWBIAS_RES
+    * xI21 (Oscm VDD VSS) MIXER_LOSWBIAS_RES
+    R18 (OUTP VDD) res=13K
+    R17 (OUTM VDD) res=13K
+    * C15 (LOP Oscp) cap=32pF
     C6 (RFM tailm ) cap=22pF
     C7 (RFP tailp ) cap=22pF
-    C14 (LOM Oscm) cap=32pF
-    R2 (IFP OUTP ) res=6K
-    R5\<1\> (VSS net043\<0\> ) res=6K
-    R5\<2\> (VSS net043\<1\> ) res=6K
-    R5\<3\> (VSS net043\<2\> ) res=6K
-    R5\<4\> (VSS net043\<3\> ) res=6K
-    R0 (OUTM IFM ) res=6K
+    * C14 (LOM Oscm) cap=32pF
+    * R2 (IFP OUTP ) res=6K
+    * R0 (OUTM IFM ) res=6K
 ends Mixer
 
 subckt LO_MIXER_1CHNB AVDD_BPF0P5 AVDD_ILO0P5 AVDD_LO1V AVDD_MIXER AVDD_TBUF1V AVSS DIG_BPF\<3\> DIG_BPF\<2\> DIG_BPF\<1\> DIG_BPF\<0\> DIG_ILO\<3\> DIG_ILO\<2\> DIG_ILO\<1\> DIG_ILO\<0\> EN_BBTST EN_ILOTST IBUF625\<1\> IBUF625\<0\> IFM IFP LOM_BPF2G LOP_BPF2G MIXER_BIAS RFM RFP
-    xI22 (net027 net032 net034 net033 AVDD_TBUF1V AVSS) vcobuf50
     xI12 (AVDD_BPF0P5 AVDD_ILO0P5 AVDD_LO1V AVSS DIG_BPF\<3\> DIG_BPF\<2\> DIG_BPF\<1\> DIG_BPF\<0\> DIG_ILO\<3\> DIG_ILO\<2\> DIG_ILO\<1\> DIG_ILO\<0\> IBUF625\<0\> IBUF625\<1\> LOM_BPF2G LOP_BPF2G net042 net041 net020 net019) LO_1CHNB_ALT
-    xI14 (IFM IFP net042 net041 MIXER_BIAS net031 net030 RFM RFP AVDD_MIXER AVSS) Mixer
+    xI14 (net042 net041 net031 net030 RFM RFP AVDD_MIXER AVSS) Mixer
 ends LO_MIXER_1CHNB
 
 subckt LO_MIXER_1CHWB AVDD_BPF0P5 AVDD_ILO0P5 AVDD_LO1V AVDD_MIXER AVDD_PS AVDD_TBUF1V AVSS DVDD_PSLM DVSS_PSLM GC_BPF_F0\<3\> GC_BPF_F0\<2\> GC_BPF_F0\<1\> GC_BPF_F0\<0\> GC_BPF_F1\<3\> GC_BPF_F1\<2\> GC_BPF_F1\<1\> GC_BPF_F1\<0\> GC_ENBBTST GC_ENILOTST GC_ENPSBRE GC_ILO_F0\<3\> GC_ILO_F0\<2\> GC_ILO_F0\<1\> GC_ILO_F0\<0\> GC_ILO_F1\<3\> GC_ILO_F1\<2\> GC_ILO_F1\<1\> GC_ILO_F1\<0\> GC_INTP_I\<2\> GC_INTP_I\<1\> GC_INTP_I\<0\> GC_INTP_Q\<2\> GC_INTP_Q\<1\> GC_INTP_Q\<0\> IF_OUTM_F0 IF_OUTM_F1 IF_OUTP_F0 IF_OUTP_F1 ILO_IBUF625\<3\> ILO_IBUF625\<2\> ILO_IBUF625\<1\> ILO_IBUF625\<0\> INTP_DCB INTP_IB LOINM_2G LOINP_2G MIXER_BIAS\<1\> MIXER_BIAS\<0\> PSOUT RFM_MIXER RFP_MIXER VPSLIM_H VPSLIM_L
@@ -223,35 +205,29 @@ subckt LO_MIXER_1CHWB AVDD_BPF0P5 AVDD_ILO0P5 AVDD_LO1V AVDD_MIXER AVDD_PS AVDD_
 ends LO_MIXER_1CHWB
 
 subckt LNA_QM_CORE net059 OUTN IN_INT
+*CS input res
 R5 (net011 VAUX ) res=6K
-R4 (net063 SF_BIAS ) res=6K
+* R4 (net063 SF_BIAS ) res=6K
 R10 (net0252 VMAIN ) res=6K
-R3 (net033 SF_BIAS ) res=6K
-C12 (net0252 VSS) cap=16pF
-C9 (net0252 VSS) cap=16pF
-C6 (OUTN net063) cap=20pF
+* R3 (net033 SF_BIAS ) res=6K
+C9 (net0252 VSS) cap=32pF
+* C6 (OUTN net063) cap=20pF
 C43 (IN_INT net011) cap=16pF
-C5 (OUTP net033) cap=20pF
-C11 (net059 VDD) cap=100pF
-C8 (net047 VDD) cap=100pF
-M10 (VDD net033 VOUTP VOUTP) nmos_rf lr=120.0n wr=2u nr=32 m=1
-M12 (VDD net063 VOUTN VOUTN) nmos_rf lr=120.0n wr=2u nr=32 m=1
+* C5 (OUTP net033) cap=20pF
+* C11 (net059 VDD) cap=100pF
+* C8 (net047 VDD) cap=100pF
+* M10 (VDD net033 VOUTP VOUTP) nmos_rf lr=120.0n wr=2u nr=32 m=1
+* M12 (VDD net063 VOUTN VOUTN) nmos_rf lr=120.0n wr=2u nr=32 m=1
+*CS transistor
 M4 (OUTN net011 VSS VSS) nmos_rf lr=60n wr=1u nr=10 m=4
+*CG transoistor
 M13 (OUTP net0252 IN_INT IN_INT) nmos_rf lr=60n wr=1u nr=10 m=1
-R38 (net058 net057 ) res=1K l=24.0u w=3u m=1
-R0 (VOUTP VSS ) res=20K
-R36 (net042 net056 ) res=1K l=24.0u w=3u m=1
-R35 (net056 net055 ) res=1K l=24.0u w=3u m=1
-R34 (net055 net054 ) res=1K l=24.0u w=3u m=1
-R33 (net054 net060 ) res=1K l=24.0u w=3u m=1
-R41 (OUTN net032 ) res=1K l=24.0u w=3u m=1
-R32 (net060 OUTP ) res=1K l=24.0u w=3u m=1
-R1 (VOUTN VSS ) res=20K
-R40 (net032 VDD ) res=1K l=24.0u w=3u m=1
-R37 (net057 net042 ) res=1K l=24.0u w=3u m=1
-R39 (VDD net058 ) res=1K l=24.0u w=3u m=1
-L8 (net047 OUTP ) ind=1mH w=3u rad=41.0u nr=3.75 lay=9
-L9 (net059 OUTN ) ind=1mH w=3u rad=39.0u nr=3.75 lay=9
+* R0 (VOUTP VSS ) res=20K
+R32 (VDD OUTP ) res=8K l=24.0u w=3u m=1
+* R1 (VOUTN VSS ) res=20K
+R40 (OUTN VDD ) res=2K l=24.0u w=3u m=1
+L8 (VDD OUTP ) ind=1mH w=3u rad=41.0u nr=3.75 lay=9
+L9 (VDD OUTN ) ind=1mH w=3u rad=39.0u nr=3.75 lay=9
 ends LNA_QM_CORE
 
 .subckt mixer_bpf_ilo_top AVDD_BPF0P5 AVDD_ILO0P5 AVDD_LO1V AVDD_MIXER AVDD_PS AVDD_TBUF1V AVSS DVDD_PSLM DVSS_PSLM GC_BPF_F0_C0\<3\> GC_BPF_F0_C0\<2\> GC_BPF_F0_C0\<1\> GC_BPF_F0_C0\<0\> GC_BPF_F1_C0\<3\> GC_BPF_F1_C0\<2\> GC_BPF_F1_C0\<1\> GC_BPF_F1_C0\<0\> GC_ENBBTST GC_ENILOTST GC_ENPSBRE_C0 GC_ILO_F0_C0\<3\> GC_ILO_F0_C0\<2\> GC_ILO_F0_C0\<1\> GC_ILO_F0_C0\<0\> GC_ILO_F1_C0\<3\> GC_ILO_F1_C0\<2\> GC_ILO_F1_C0\<1\> GC_ILO_F1_C0\<0\> GC_PS_I_C0\<2\> GC_PS_I_C0\<1\> GC_PS_I_C0\<0\> GC_PS_Q_C0\<2\> GC_PS_Q_C0\<1\> GC_PS_Q_C0\<0\> IF_OUTM_F0_C0 IF_OUTM_F1_C0 IF_OUTP_F0_C0 IF_OUTP_F1_C0 IBUF625_ILO\<3\> IBUF625_ILO\<2\> IBUF625_ILO\<1\> IBUF625_ILO\<0\> VDCB_PS_C0 IB_PS_C0 LOINM_2G LOINP_2G IBIAS_MIXER\<1\> IBIAS_MIXER\<0\> net065 RFM_MIXER_C0 RFP_MIXER_C0 VPSLIM_H_C0 VPSLIM_L_C0
