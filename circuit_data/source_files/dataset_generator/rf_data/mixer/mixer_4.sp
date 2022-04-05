@@ -28,21 +28,21 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 4_double_balanced_sampling_mixer Vbiasn Vrfn Vrfp vifm vifp vlom vlop
-*.PININFO Vbiasn:I Vrfn:I Vrfp:I vlom:I vlop:I vifm:O vifp:O
-MM3 Vrfn net78 vifp gnd! nmos_rvt w=27n l=20n nfin=1
-MM2 Vrfn net80 vifm gnd! nmos_rvt w=27n l=20n nfin=1
-MM1 Vrfp net81 vifp gnd! nmos_rvt w=27n l=20n nfin=1
-MM0 Vrfp net83 vifm gnd! nmos_rvt w=27n l=20n nfin=1
-CC5 vifp gnd! 1p
-CC2 vlom net80 1p
+.SUBCKT 4_double_balanced_sampling_mixer vbiasn vrfn vrfp voutn voutp vlon vlop
+*.PININFO vbiasn:I vrfn:I vrfp:I vlon:I vlop:I voutn:O voutp:O
+MM3 vrfn net78 voutp gnd! nmos_rvt w=27n l=20n nfin=1
+MM2 vrfn net80 voutn gnd! nmos_rvt w=27n l=20n nfin=1
+MM1 vrfp net81 voutp gnd! nmos_rvt w=27n l=20n nfin=1
+MM0 vrfp net83 voutn gnd! nmos_rvt w=27n l=20n nfin=1
+CC5 voutp gnd! 1p
+CC2 vlon net80 1p
 CC0 net78 vlop 1p
-CC4 vifm gnd! 1p
+CC4 voutn gnd! 1p
 CC3 vlop net83 1p
-CC1 net81 vlom 1p
-RR5 net78 Vbiasn res=1K
-RR4 net80 Vbiasn res=1K
-RR0 net81 Vbiasn res=1K
-RR1 net83 Vbiasn res=1K
+CC1 net81 vlon 1p
+RR5 net78 vbiasn res=1K
+RR4 net80 vbiasn res=1K
+RR0 net81 vbiasn res=1K
+RR1 net83 vbiasn res=1K
 .ENDS
 

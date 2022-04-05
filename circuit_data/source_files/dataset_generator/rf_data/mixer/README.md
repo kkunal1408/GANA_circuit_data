@@ -7,7 +7,7 @@ These are the list of Mixers available here. In some cases image and SPICE may n
 2. double balanced passive mixer - [image](../../../images/mixer/mixer_2.png) -[SPICE](./mixer_2.sp)
 3. single balanced sampling mixer - [image](../../../images/mixer/mixer_3.png) - [SPICE](./mixer_3.sp)
 4. double balanced sampling mixer - [image](../../../images/mixer/mixer_4.png) - [SPICE](./mixer_4.sp)
-5. output combining single balanced sampling mixer (problem: why it does not have output?)
+5. output combining single balanced sampling mixer
 6. passive with gain stage
 7. passive with gain stage bias bath RF
 8. passive with gain stage bias bath baseband output
@@ -23,10 +23,10 @@ These are the list of Mixers available here. In some cases image and SPICE may n
 
 # Features
 These topologies can be classified broadly in three categories (Common-Source (CS), Common-Gate (CG), Broadband).
-1. The input signals from LNA is named as "Vrf" or "Vrfn" and "Vrfp" in case of double mixers
-2. The input signals from two oscillators are marked as "vlom" and "vlop"
+1. The input signals from LNA is named as "vrf" or "vrfn" and "Vrfp" in case of double mixers
+2. The input signals from two oscillators are marked as "vlon" and "vlop"
 3. The bias signals are marked as "Vbiasn/Vbiasp". In some cases there would be two bias signals "Vbiasn1/Vbiasn2" where Vbiasn2 > Vbiasn1. In some cases there are three bias signals Vbiasn0, Vbiasn1 and Vbiasn2 where Vbiasn0 < Vbiasn1 < Vbiasn2
-4. The output signal is "Vifm" and "Vifp" which will go to an amplifier or Voutn and Voutp
+4. The output signal is "voutn" and "voutp" which will go to an amplifier
 
 # sources
 1. RF Microelectronics, 2nd Edition, Behzad Razavi

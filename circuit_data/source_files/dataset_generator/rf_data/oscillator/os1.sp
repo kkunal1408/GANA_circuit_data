@@ -30,15 +30,15 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT cross_coupled_oscillator Voutn Voutp
-*.PININFO Voutn:O Voutp:O
-LL1 vdd! Voutp ind=2m
-LL0 vdd! Voutn ind=2m
-RR1 vdd! Voutp res=5K
-RR0 vdd! Voutn res=5K
-CC0 vdd! Voutp cap=10f
-CC1 vdd! Voutn cap=10f
-MM1 Voutn Voutp gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-MM0 Voutp Voutn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+.SUBCKT cross_coupled_oscillator vlon vlop
+*.PININFO vlon:O vlop:O
+LL1 vdd! vlop ind=2m
+LL0 vdd! vlon ind=2m
+RR1 vdd! vlop res=5K
+RR0 vdd! vlon res=5K
+CC0 vdd! vlop cap=10f
+CC1 vdd! vlon cap=10f
+MM1 vlon vlop gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+MM0 vlop vlon gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 .ENDS
 

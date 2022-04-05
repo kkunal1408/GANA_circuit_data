@@ -30,15 +30,15 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 11_CS_inductive_degenerate Vbiasn Vin Vout
-*.PININFO Vbiasn:I Vin:I Vout:O
-LL0 vdd! Vout ind=1n
-LL2 Vin net13 ind=1n
+.SUBCKT 11_CS_inductive_degenerate vbiasn vantenna vrf
+*.PININFO vbiasn:I vantenna:I vrf:O
+LL0 vdd! vrf ind=1n
+LL2 vantenna net13 ind=1n
 LL1 net12 gnd! ind=1n
-CC0 vdd! Vout 1p
-RR0 Vout vdd! res=1K
-RR1 net13 Vbiasn res=1K
-MM0 Vout vdd! net14 gnd! nmos_rvt w=27n l=20n nfin=1
+CC0 vdd! vrf 1p
+RR0 vrf vdd! res=1K
+RR1 net13 vbiasn res=1K
+MM0 vrf vdd! net14 gnd! nmos_rvt w=27n l=20n nfin=1
 MM1 net14 net13 net12 gnd! nmos_rvt w=27n l=20n nfin=1
 .ENDS
 

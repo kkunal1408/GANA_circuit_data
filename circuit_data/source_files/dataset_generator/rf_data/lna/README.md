@@ -25,10 +25,10 @@ These are the list of LNAs available here
 
 # Features
 These topologies can be classified broadly in three categories (Common-Source (CS), Common-Gate (CG), Broadband).
-1. The input signals from antenna named as "Vin" (marked as signal) or "Vin1" and "Vin2" in differential LNA
+1. The input signals from antenna named as "Vantenna" (marked as signal) or "Vantenna1" and "Vantenna2" in differential LNA
 2. The gain switching signals are named as GS1/GS2 (marked as enable)
 3. The bias signals are marked as "Vbiasn/Vbiasp". In some cases there would be two bias signals "Vbiasn1/Vbiasn2" where Vbiasn2 > Vbiasn1
-4. The output signal is "Vout" which goes to the mixer or "Vout1" and "Vout2" in differential LNA
+4. The output signal is "Vrf" which goes to the mixer or "Vrfn" and "Vrfp" in differential LNA
 
 # sources
 1. RF Microelectronics, 2nd Edition, Behzad Razavi

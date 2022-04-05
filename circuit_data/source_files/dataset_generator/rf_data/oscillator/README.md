@@ -28,7 +28,7 @@ These are the list of oscillators available here. In some cases image and SPICE 
 # Features
 These topologies consist these net features
 1. Some oscillators do not need an input signal and run at a fixed frequency. Some can be controlled using a three terminal cap with third terminal as marked as "Vdigital/Vdigital_a/Vdigital_b" (enable). The center point needs to be tuned in this case and tuned using a signal "Vtune/Vcontrol" (enable). In some cases we use a resitor to bias the middle point which is biased using a signal "Vbias_a/Vbias_b" (enable).
-2. The output signals to two oscillators are marked as "Voutn" and "Voutp".
+2. The output signals to two oscillators are marked as "vlon" and "vlop".
 3. The bias signals are marked as "Vbiasn/Vbiasp" which are used to bias the inductor. In some cases there would be two bias signals "Vbiasn1/Vbiasn2" where Vbiasn2 > Vbiasn1. In some cases there are three bias signals Vbiasn0, Vbiasn1 and Vbiasn2 where Vbiasn0 < Vbiasn1 < Vbiasn2
 
 

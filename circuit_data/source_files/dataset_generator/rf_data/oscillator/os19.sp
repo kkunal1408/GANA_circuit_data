@@ -30,12 +30,12 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT negative_resistance_oscillator_2 Voutn Voutp
-*.PININFO Voutn:O Voutp:O
-LL1 Voutn Voutp ind=1n
-MM3 Voutn Voutp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
-MM2 Voutp Voutn net13 net13 pmos_rvt w=27n l=20n nfin=1
-MM1 Voutn Voutp gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-MM0 Voutp Voutn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+.SUBCKT negative_resistance_oscillator_2 vlon vlop
+*.PININFO vlon:O vlop:O
+LL1 vlon vlop ind=1n
+MM3 vlon vlop vdd! vdd! pmos_rvt w=27n l=20n nfin=1
+MM2 vlop vlon net13 net13 pmos_rvt w=27n l=20n nfin=1
+MM1 vlon vlop gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+MM0 vlop vlon gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 .ENDS
 

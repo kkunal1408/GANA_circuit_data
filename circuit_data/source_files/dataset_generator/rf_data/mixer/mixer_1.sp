@@ -28,15 +28,15 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 1_single_balanced_passive Vbiasn Vrf vifm vifp vlom vlop
-*.PININFO Vbiasn:I Vrf:I vlom:I vlop:I vifm:O vifp:O
-MM1 Vrf net14 vifp gnd! nmos_rvt w=27n l=20n nfin=1
-MM0 Vrf net16 vifm gnd! nmos_rvt w=27n l=20n nfin=1
+.SUBCKT 1_single_balanced_passive vbiasn vrf voutn voutp vlon vlop
+*.PININFO vbiasn:I vrf:I vlon:I vlop:I voutn:O voutp:O
+MM1 vrf net14 voutp gnd! nmos_rvt w=27n l=20n nfin=1
+MM0 vrf net16 voutn gnd! nmos_rvt w=27n l=20n nfin=1
 CC3 vlop net16 1p
-CC1 net14 vlom 1p
-RR3 gnd! vifp res=1K
-RR2 vifm gnd! res=1K
-RR0 net14 Vbiasn res=1K
-RR1 net16 Vbiasn res=1K
+CC1 net14 vlon 1p
+RR3 gnd! voutp res=1K
+RR2 voutn gnd! res=1K
+RR0 net14 vbiasn res=1K
+RR1 net16 vbiasn res=1K
 .ENDS
 

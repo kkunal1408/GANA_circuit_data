@@ -30,15 +30,15 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 16_resistance_cancelling_lna Vbiasn Vin vout1 vout2
-*.PININFO Vbiasn:I Vin:I vout1:O vout2:O
-RR3 vout1 vdd! res=1K
+.SUBCKT 16_resistance_cancelling_lna vbiasn vantenna vrfn vrfp
+*.PININFO vbiasn:I vantenna:I vrfn:O vrfp:O
+RR3 vrfn vdd! res=1K
 RR0 net9 vdd! res=1K
-RR4 vout2 vdd! res=1K
-CC1 Vin vout2 1p
-MM8 vout2 vout1 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-MM7 vout1 net9 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-MM6 vout2 Vbiasn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-MM0 net9 vout2 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+RR4 vrfp vdd! res=1K
+CC1 vantenna vrfp 1p
+MM8 vrfp vrfn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+MM7 vrfn net9 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+MM6 vrfp vbiasn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+MM0 net9 vrfp gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 .ENDS
 

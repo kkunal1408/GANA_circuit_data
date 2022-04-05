@@ -30,12 +30,12 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 5_CG_current_source Vbiasn1 Vbiasn2 Vin Vout
-*.PININFO Vbiasn1:I Vbiasn2:I Vin:I Vout:O
-CC1 Vin net13 1p
+.SUBCKT 5_CG_current_source vbiasn1 vbiasn2 vantenna vrf
+*.PININFO vbiasn1:I vbiasn2:I vantenna:I vrf:O
+CC1 vantenna net13 1p
 RR2 gnd! net13 res=1K
-MM0 Vout Vbiasn2 net13 gnd! nmos_rvt w=27n l=20n nfin=1
-MM1 net13 Vbiasn1 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-LL0 vdd! Vout ind=1n
+MM0 vrf vbiasn2 net13 gnd! nmos_rvt w=27n l=20n nfin=1
+MM1 net13 vbiasn1 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+LL0 vdd! vrf ind=1n
 .ENDS
 

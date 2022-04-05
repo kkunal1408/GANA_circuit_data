@@ -30,17 +30,17 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 13_CS_transformer_feedforward Vbiasp Vin Vout
-*.PININFO Vbiasp:I Vin:I Vout:O
+.SUBCKT 13_CS_transformer_feedforward vbiasp vantenna vrf
+*.PININFO vbiasp:I vantenna:I vrf:O
 CC2 vdd! gnd! 1p
-CC0 vdd! Vout 1p
-CC1 Vin net21 1p
-RR0 Vout vdd! res=1K
+CC0 vdd! vrf 1p
+CC1 vantenna net21 1p
+RR0 vrf vdd! res=1K
 MM2 net28 vdd! gnd! net28 nmos_rvt w=27n l=20n nfin=1
-MM1 Vout net012 net21 gnd! nmos_rvt w=27n l=20n nfin=1
-LL0 vdd! Vout ind=1n
+MM1 vrf net012 net21 gnd! nmos_rvt w=27n l=20n nfin=1
+LL0 vdd! vrf ind=1n
 LL2 vdd! net012 ind=1n
 LL1 net21 gnd! ind=1n
-MM3 net28 Vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
+MM3 net28 vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
 .ENDS
 

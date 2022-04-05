@@ -30,10 +30,10 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT cross_coupled_oscillator_ind Voutn Voutp
-*.PININFO Voutn:O Voutp:O
-MM1 Voutn Voutp gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-MM0 Voutp Voutn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-XL0 Voutn Voutp gnd! vdd! spiral_sym_ct_mu_z w=15u nr=3 rad=60u lay=9
+.SUBCKT cross_coupled_oscillator_ind vlon vlop
+*.PININFO vlon:O vlop:O
+MM1 vlon vlop gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+MM0 vlop vlon gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+XL0 vlon vlop gnd! vdd! spiral_sym_ct_mu_z w=15u nr=3 rad=60u lay=9
 .ENDS
 

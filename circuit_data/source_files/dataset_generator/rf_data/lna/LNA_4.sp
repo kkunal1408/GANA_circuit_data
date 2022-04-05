@@ -30,12 +30,12 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 4_CG_stage Vbiasn Vin Vout
-*.PININFO Vbiasn:I Vin:I Vout:O
-MM0 Vout Vbiasn net10 gnd! nmos_rvt w=27n l=20n nfin=1
-LL0 vdd! Vout ind=1n
+.SUBCKT 4_CG_stage vbiasn vantenna vrf
+*.PININFO vbiasn:I vantenna:I vrf:O
+MM0 vrf vbiasn net10 gnd! nmos_rvt w=27n l=20n nfin=1
+LL0 vdd! vrf ind=1n
 RRb gnd! net10 res=1K
-RR1 vdd! Vout res=1K
-CC1 Vin net10 1p
+RR1 vdd! vrf res=1K
+CC1 vantenna net10 1p
 .ENDS
 

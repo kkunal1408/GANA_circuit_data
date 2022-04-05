@@ -30,14 +30,14 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 15_CS_load_switching GS1 GS2 Vb Vin Vout
-*.PININFO GS1:I GS2:I Vb:I Vin:I Vout:O
-RR0 Vout vdd! res=1K
+.SUBCKT 15_CS_load_switching GS1 GS2 vbiasn vantenna vrf
+*.PININFO GS1:I GS2:I Vb:I vantenna:I vrf:O
+RR0 vrf vdd! res=1K
 RRb gnd! net15 res=1K
-CC1 Vin net15 1p
-MM0 Vout Vb net15 gnd! nmos_rvt w=27n l=20n nfin=1
-LL0 vdd! Vout ind=1n
-MM2 Vout GS2 vdd! vdd! pmos_rvt w=27n l=20n nfin=1
-MM1 Vout GS1 vdd! vdd! pmos_rvt w=27n l=20n nfin=1
+CC1 vantenna net15 1p
+MM0 vrf vbiasn net15 gnd! nmos_rvt w=27n l=20n nfin=1
+LL0 vdd! vrf ind=1n
+MM2 vrf GS2 vdd! vdd! pmos_rvt w=27n l=20n nfin=1
+MM1 vrf GS1 vdd! vdd! pmos_rvt w=27n l=20n nfin=1
 .ENDS
 

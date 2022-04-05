@@ -30,11 +30,11 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 6_CG_biasing_with_resistor Vbiasn Vin Vout
-*.PININFO Vbiasn:I Vin:I Vout:O
-CC1 Vin net14 1p
+.SUBCKT 6_CG_biasing_with_resistor vbiasn vantenna vrf
+*.PININFO vbiasn:I vantenna:I vrf:O
+CC1 vantenna net14 1p
 RRb gnd! net14 res=1K
-MM0 Vout Vbiasn net14 gnd! nmos_rvt w=27n l=20n nfin=1
-LL0 vdd! Vout ind=1n
+MM0 vrf vbiasn net14 gnd! nmos_rvt w=27n l=20n nfin=1
+LL0 vdd! vrf ind=1n
 .ENDS
 

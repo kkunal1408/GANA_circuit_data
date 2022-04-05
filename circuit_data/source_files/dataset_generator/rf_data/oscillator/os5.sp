@@ -30,17 +30,17 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT cross_coupled_oscillator_nmos_cap_vbias Vbiasn Vdigital Voutn Voutp Vtune
-*.PININFO Vbiasn:I Vdigital:I Vtune:I Voutn:O Voutp:O
-XL0 Voutn Voutp gnd! net14 spiral_sym_ct_mu_z w=15u nr=3 rad=60u lay=9
-MM6 net8 Vbiasn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-MM3 gnd! Voutn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-MM2 gnd! Voutp gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-MM1 Voutn Voutp gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-MM0 Voutp Voutn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+.SUBCKT cross_coupled_oscillator_nmos_cap_vbias vbiasn Vdigital vlon vlop Vtune
+*.PININFO vbiasn:I Vdigital:I Vtune:I vlon:O vlop:O
+XL0 vlon vlop gnd! net14 spiral_sym_ct_mu_z w=15u nr=3 rad=60u lay=9
+MM6 net8 vbiasn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+MM3 gnd! vlon gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+MM2 gnd! vlop gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+MM1 vlon vlop gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+MM0 vlop vlon gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM5 net14 net8 vdd! vdd! pmos_rvt w=27n l=20n nfin=1
 MM4 net8 net8 vdd! vdd! pmos_rvt w=27n l=20n nfin=1
-XC4 Voutn Vtune Vdigital moscap_rf wr=1.6u lr=400n br=4 gr=3 m=1
-XC5 Vtune Voutp Vdigital moscap_rf wr=1.6u lr=400n br=4 gr=3 m=1
+XC4 vlon Vtune Vdigital moscap_rf wr=1.6u lr=400n br=4 gr=3 m=1
+XC5 Vtune vlop Vdigital moscap_rf wr=1.6u lr=400n br=4 gr=3 m=1
 .ENDS
 

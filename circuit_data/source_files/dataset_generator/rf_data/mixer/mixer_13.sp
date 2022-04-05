@@ -30,19 +30,19 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 13_single_balanced_current_source Vbiasn1 Vbiasn2 Vbiasp Voutn Voutp Vrf vlon vlop
-*.PININFO Vbiasn1:I Vbiasn2:I Vbiasp:I Vrf:I vlon:I vlop:I Voutn:O Voutp:O
-MM0 Voutn net018 net21 gnd! nmos_rvt w=27n l=20n nfin=1
-MM1 Voutp net016 net21 gnd! nmos_rvt w=27n l=20n nfin=1
+.SUBCKT 13_single_balanced_current_source vbiasn1 vbiasn2 vbiasp voutn voutp vrf vlon vlop
+*.PININFO vbiasn1:I vbiasn2:I vbiasp:I vrf:I vlon:I vlop:I voutn:O voutp:O
+MM0 voutn net018 net21 gnd! nmos_rvt w=27n l=20n nfin=1
+MM1 voutp net016 net21 gnd! nmos_rvt w=27n l=20n nfin=1
 MM2 net21 net24 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 CC3 vlon net018 1p
 CC2 vlop net016 1p
-CC1 Vrf net24 1p
-RR5 net016 Vbiasn2 res=1K
-RR6 net018 Vbiasn2 res=1K
-RR2 Voutp vdd! res=1K
-RR0 Voutn vdd! res=1K
-RR4 net24 Vbiasn1 res=1K
-MM3 net21 Vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
+CC1 vrf net24 1p
+RR5 net016 vbiasn2 res=1K
+RR6 net018 vbiasn2 res=1K
+RR2 voutp vdd! res=1K
+RR0 voutn vdd! res=1K
+RR4 net24 vbiasn1 res=1K
+MM3 net21 vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
 .ENDS
 

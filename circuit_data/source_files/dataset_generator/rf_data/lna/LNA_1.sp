@@ -30,11 +30,11 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 1_CS_inductive_load Vbiasn Vin Vout
-*.PININFO Vbiasn:I Vin:I Vout:O
-LL0 vdd! Vout ind=2m
-MM0 Vout net5 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-RR0 Vbiasn net5 res=5K
-CC1 Vin net5 cap=10f
+.SUBCKT 1_CS_inductive_load vbiasn vantenna vrf
+*.PININFO vbiasn:I vantenna:I vrf:O
+LL0 vdd! vrf ind=2m
+MM0 vrf net5 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+RR0 vbiasn net5 res=5K
+CC1 vantenna net5 cap=10f
 .ENDS
 

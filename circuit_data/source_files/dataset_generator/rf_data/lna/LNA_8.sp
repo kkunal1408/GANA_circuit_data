@@ -30,14 +30,14 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 8_CG_cascode_stage Vbiasn1 Vbiasn2 Vin Vout
-*.PININFO Vbiasn1:I Vbiasn2:I Vin:I Vout:O
-CC0 vdd! Vout 1p
-CC1 Vin net17 1p
-RR0 Vout vdd! res=1K
+.SUBCKT 8_CG_cascode_stage vbiasn1 vbiasn2 vantenna vrf
+*.PININFO vbiasn1:I vbiasn2:I vantenna:I vrf:O
+CC0 vdd! vrf 1p
+CC1 vantenna net17 1p
+RR0 vrf vdd! res=1K
 RR2 gnd! net17 res=1K
-MM1 net21 Vbiasn1 net17 gnd! nmos_rvt w=27n l=20n nfin=1
-MM0 Vout Vbiasn2 net21 gnd! nmos_rvt w=27n l=20n nfin=1
-LL0 vdd! Vout ind=1n
+MM1 net21 vbiasn1 net17 gnd! nmos_rvt w=27n l=20n nfin=1
+MM0 vrf vbiasn2 net21 gnd! nmos_rvt w=27n l=20n nfin=1
+LL0 vdd! vrf ind=1n
 .ENDS
 

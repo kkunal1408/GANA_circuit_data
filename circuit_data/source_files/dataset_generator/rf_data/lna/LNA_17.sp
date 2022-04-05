@@ -30,19 +30,19 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 17_CS_differential Vbiasn Vin1 Vin2 Vout1 Vout2
-*.PININFO Vbiasn:I Vin1:I Vin2:I Vout1:O Vout2:O
-LL0 vdd! Vout2 ind=1n
+.SUBCKT 17_CS_differential vbiasn vantenna1 vantenna2 vrfn vrfp
+*.PININFO vbiasn:I vantenna1:I vantenna2:I vrfn:O vrfp:O
+LL0 vdd! vrfp ind=1n
 LL1 net33 gnd! ind=1n
-LL3 vdd! Vout1 ind=1n
+LL3 vdd! vrfn ind=1n
 LL4 net34 gnd! ind=1n
-MM0 Vout2 vdd! net31 gnd! nmos_rvt w=27n l=20n nfin=1
+MM0 vrfp vdd! net31 gnd! nmos_rvt w=27n l=20n nfin=1
 MM1 net31 net30 net33 gnd! nmos_rvt w=27n l=20n nfin=1
 MM3 net32 net29 net34 gnd! nmos_rvt w=27n l=20n nfin=1
-MM2 Vout1 vdd! net32 gnd! nmos_rvt w=27n l=20n nfin=1
-CC1 Vin2 net30 1p
-CC0 Vin1 net29 1p
-RR1 Vbiasn net30 res=1K
-RR0 Vbiasn net29 res=1K
+MM2 vrfn vdd! net32 gnd! nmos_rvt w=27n l=20n nfin=1
+CC1 vantenna2 net30 1p
+CC0 vantenna1 net29 1p
+RR1 vbiasn net30 res=1K
+RR0 vbiasn net29 res=1K
 .ENDS
 

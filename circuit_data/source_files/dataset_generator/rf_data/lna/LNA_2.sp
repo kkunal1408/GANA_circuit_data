@@ -30,11 +30,11 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 2_CS_resistive_feedback Vbiasp Vin Vout
-*.PININFO Vbiasp:I Vin:I Vout:O
-MM1 Vout Vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
-MM0 Vout net6 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-RRF Vout net6 res=1K
-CC1 Vin net6 1p
+.SUBCKT 2_CS_resistive_feedback vbiasp vantenna vrf
+*.PININFO vbiasp:I vantenna:I vrf:O
+MM1 vrf vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
+MM0 vrf net6 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
+RRF vrf net6 res=1K
+CC1 vantenna net6 1p
 .ENDS
 
