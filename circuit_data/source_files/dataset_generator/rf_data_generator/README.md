@@ -10,3 +10,8 @@ All these structures are provided in SPICE netlist format.
 - *mixer*: contains various mixer circuits used for RF receivers
 - *oscillator*: contains oscillators topologies
 - *merge_circuit.py*: utilizes *lnas, mixer, oscillator* subcircuits to generate full RF receiver circuits
+
+## These are the topologies available 
+
+![image](https://user-images.githubusercontent.com/40378093/163063782-2ffa2104-9180-435a-8844-23153ed5212b.png)
+![image](https://user-images.githubusercontent.com/40378093/163063891-88795c2d-bfdf-4c75-8c26-d550592eee1c.png)
