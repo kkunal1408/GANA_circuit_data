@@ -30,10 +30,10 @@
 * view Name:    schematic
 ************************************************************************
 
-.SUBCKT fully_differential_pmos vbiasn vbiasp vinn vinp voutn voutp
-*.PININFO vbiasp:I vinn:I vinp:I vbiasn:O voutn:O voutp:O
-MM7 voutp vinn net12 net16 pmos w=WA l=LA nfin=nA
-MM6 voutn vinp net12 net16 pmos w=WA l=LA nfin=nA
+.SUBCKT fully_differential_pmos vbiasn vbiasp votan votap voutn voutp
+*.PININFO vbiasp:I votan:I votap:I vbiasn:O voutn:O voutp:O
+MM7 voutp votan net12 net16 pmos w=WA l=LA nfin=nA
+MM6 voutn votap net12 net16 pmos w=WA l=LA nfin=nA
 MM5 net12 vbiasp vdd! vdd! pmos w=WA l=LA nfin=nA
 MM9 voutp vbiasn gnd! gnd! nmos w=WA l=LA nfin=nA
 MM8 voutn vbiasn gnd! gnd! nmos w=WA l=LA nfin=nA

@@ -30,10 +30,10 @@
 * view Name:    schematic
 ************************************************************************
 
-.SUBCKT Fully_differential_current_mirror vbiasn vbiasn1 vinn vinp voutn voutp
-*.PININFO vbiasn:I vbiasn1:I vinn:I vinp:I voutn:O voutp:O
-MM3 net23 vinp net19 gnd! nmos w=WA l=LA nfin=nA
-MM0 net15 vinn net19 gnd! nmos w=WA l=LA nfin=nA
+.SUBCKT Fully_differential_current_mirror vbiasn vbiasn1 votan votap voutn voutp
+*.PININFO vbiasn:I vbiasn1:I votan:I votap:I voutn:O voutp:O
+MM3 net23 votap net19 gnd! nmos w=WA l=LA nfin=nA
+MM0 net15 votan net19 gnd! nmos w=WA l=LA nfin=nA
 MM4 net19 vbiasn gnd! gnd! nmos w=WA l=LA nfin=nA
 MM8 voutp vbiasn1 gnd! gnd! nmos w=WA l=LA nfin=nA
 MM7 voutn vbiasn1 gnd! gnd! nmos w=WA l=LA nfin=nA

@@ -30,10 +30,10 @@
 * view Name:    schematic
 ************************************************************************
 
-.SUBCKT fully_differential_cascode vbiasn vbiasp1 vbiasp2 vinn vinp voutn voutp
-*.PININFO vbiasn:I vbiasp1:I vbiasp2:I vinn:I vinp:I voutn:O voutp:O
-MM3 voutn vinp net16 gnd! nmos w=WA l=LA nfin=nA
-MM0 voutp vinn net16 gnd! nmos w=WA l=LA nfin=nA
+.SUBCKT fully_differential_cascode vbiasn vbiasp1 vbiasp2 votan votap voutn voutp
+*.PININFO vbiasn:I vbiasp1:I vbiasp2:I votan:I votap:I voutn:O voutp:O
+MM3 voutn votap net16 gnd! nmos w=WA l=LA nfin=nA
+MM0 voutp votan net16 gnd! nmos w=WA l=LA nfin=nA
 MM4 net16 vbiasn gnd! gnd! nmos w=WA l=LA nfin=nA
 MM6 voutp vbiasp2 net22 vdd! pmos w=WA l=LA nfin=nA
 MM5 voutn vbiasp2 net21 vdd! pmos w=WA l=LA nfin=nA

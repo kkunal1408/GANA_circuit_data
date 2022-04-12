@@ -324,7 +324,7 @@ def _write_circuit_graph(out_dir, data_type, filename, graph):
     logging.info("Graph saved in circuit_graphs directory")
 
 
-# %% all graphs
+# %% main
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description="directory path for input circuits")

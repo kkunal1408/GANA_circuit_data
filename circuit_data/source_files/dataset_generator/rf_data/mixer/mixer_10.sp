@@ -30,13 +30,13 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 10_two_single_balanced_active_mixer vbiasn1 vbiasn2 voutn voutp vrfn vrfp vlon vlop
-*.PININFO vbiasn1:I vbiasn2:I vrfn:I vrfp:I vlon:I vlop:I voutn:O voutp:O
+.SUBCKT 10_two_single_balanced_active_mixer vbiasn1 vbiasn2 votan votap vrfn vrfp vlon vlop
+*.PININFO vbiasn1:I vbiasn2:I vrfn:I vrfp:I vlon:I vlop:I votan:O votap:O
 MM5 net29 net33 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
-MM4 voutn net023 net29 gnd! nmos_rvt w=27n l=20n nfin=1
-MM3 voutp net011 net29 gnd! nmos_rvt w=27n l=20n nfin=1
-MM1 voutp net020 net24 gnd! nmos_rvt w=27n l=20n nfin=1
-MM0 voutn net011 net24 gnd! nmos_rvt w=27n l=20n nfin=1
+MM4 votan net023 net29 gnd! nmos_rvt w=27n l=20n nfin=1
+MM3 votap net011 net29 gnd! nmos_rvt w=27n l=20n nfin=1
+MM1 votap net020 net24 gnd! nmos_rvt w=27n l=20n nfin=1
+MM0 votan net011 net24 gnd! nmos_rvt w=27n l=20n nfin=1
 MM2 net24 net32 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 CC0 vrfp net33 1p
 CC2 vlop net020 1p
@@ -48,8 +48,8 @@ RR9 net011 vbiasn2 res=1K
 RR5 net33 vbiasn1 res=1K
 RR7 net023 vbiasn2 res=1K
 RR6 net020 vbiasn2 res=1K
-RR2 voutp vdd! res=1K
-RR0 voutn vdd! res=1K
+RR2 votap vdd! res=1K
+RR0 votan vdd! res=1K
 RR4 net32 vbiasn1 res=1K
 .ENDS
 

@@ -30,11 +30,11 @@
 * view Name:    schematic
 ************************************************************************
 
-.SUBCKT Fully_differential_cascode_current_mirror vbiasn vbiasn1 vbiasn2  vbiasp1 vbiasp2 vinn vinp voutn voutp
-*.PININFO vbiasn:I vbiasn1:I vbiasn2:I vbiasp1:I vbiasp2:I vinn:I vinp:I
+.SUBCKT Fully_differential_cascode_current_mirror vbiasn vbiasn1 vbiasn2  vbiasp1 vbiasp2 votan votap voutn voutp
+*.PININFO vbiasn:I vbiasn1:I vbiasn2:I vbiasp1:I vbiasp2:I votan:I votap:I
 *.PININFO voutn:O voutp:O
-MM3 net22 vinp net9 gnd! nmos w=WA l=LA nfin=nA
-MM0 net31 vinn net9 gnd! nmos w=WA l=LA nfin=nA
+MM3 net22 votap net9 gnd! nmos w=WA l=LA nfin=nA
+MM0 net31 votan net9 gnd! nmos w=WA l=LA nfin=nA
 MM4 net9 vbiasn gnd! gnd! nmos w=WA l=LA nfin=nA
 MM14 voutp vbiasn2 net34 gnd! nmos w=WA l=LA nfin=nA
 MM13 voutn vbiasn2 net21 gnd! nmos w=WA l=LA nfin=nA

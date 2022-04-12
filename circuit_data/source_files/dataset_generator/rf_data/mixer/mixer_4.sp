@@ -28,16 +28,16 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 4_double_balanced_sampling_mixer vbiasn vrfn vrfp voutn voutp vlon vlop
-*.PININFO vbiasn:I vrfn:I vrfp:I vlon:I vlop:I voutn:O voutp:O
-MM3 vrfn net78 voutp gnd! nmos_rvt w=27n l=20n nfin=1
-MM2 vrfn net80 voutn gnd! nmos_rvt w=27n l=20n nfin=1
-MM1 vrfp net81 voutp gnd! nmos_rvt w=27n l=20n nfin=1
-MM0 vrfp net83 voutn gnd! nmos_rvt w=27n l=20n nfin=1
-CC5 voutp gnd! 1p
+.SUBCKT 4_double_balanced_sampling_mixer vbiasn vrfn vrfp votan votap vlon vlop
+*.PININFO vbiasn:I vrfn:I vrfp:I vlon:I vlop:I votan:O votap:O
+MM3 vrfn net78 votap gnd! nmos_rvt w=27n l=20n nfin=1
+MM2 vrfn net80 votan gnd! nmos_rvt w=27n l=20n nfin=1
+MM1 vrfp net81 votap gnd! nmos_rvt w=27n l=20n nfin=1
+MM0 vrfp net83 votan gnd! nmos_rvt w=27n l=20n nfin=1
+CC5 votap gnd! 1p
 CC2 vlon net80 1p
 CC0 net78 vlop 1p
-CC4 voutn gnd! 1p
+CC4 votan gnd! 1p
 CC3 vlop net83 1p
 CC1 net81 vlon 1p
 RR5 net78 vbiasn res=1K

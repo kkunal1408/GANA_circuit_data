@@ -26,7 +26,7 @@ These topologies can be classified broadly in three categories (Common-Source (C
 1. The input signals from LNA is named as "vrf" or "vrfn" and "Vrfp" in case of double mixers
 2. The input signals from two oscillators are marked as "vlon" and "vlop"
 3. The bias signals are marked as "Vbiasn/Vbiasp". In some cases there would be two bias signals "Vbiasn1/Vbiasn2" where Vbiasn2 > Vbiasn1. In some cases there are three bias signals Vbiasn0, Vbiasn1 and Vbiasn2 where Vbiasn0 < Vbiasn1 < Vbiasn2
-4. The output signal is "voutn" and "voutp" which will go to an amplifier
+4. The output signal is "votan" and "votap" which will go to an amplifier
 
 # sources
 1. RF Microelectronics, 2nd Edition, Behzad Razavi

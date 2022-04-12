@@ -30,13 +30,13 @@
 * view Name:    schematic
 ************************************************************************
 
-.SUBCKT fully_differential vinn vinp voutn voutp
-*.PININFO vinn:I vinp:I voutn:O voutp:O
+.SUBCKT fully_differential votan votap voutn voutp
+*.PININFO votan:I votap:I voutn:O voutp:O
 MM1 voutn vbiasp vdd! vdd! pmos w=WA l=LA nfin=nA
 MM2 voutp vbiasp vdd! vdd! pmos w=WA l=LA nfin=nA
 MM4 net14 vbiasn gnd! gnd! nmos w=WA l=LA nfin=nA
-MM3 voutn vinp net14 gnd! nmos w=WA l=LA nfin=nA
-MM0 voutp vinn net14 gnd! nmos w=WA l=LA nfin=nA
+MM3 voutn votap net14 gnd! nmos w=WA l=LA nfin=nA
+MM0 voutp votan net14 gnd! nmos w=WA l=LA nfin=nA
 .ENDS
 
 ************************************************************************
@@ -45,12 +45,12 @@ MM0 voutp vinn net14 gnd! nmos w=WA l=LA nfin=nA
 * view Name:    schematic
 ************************************************************************
 
-.SUBCKT fully_differential_gain_boosting vbiasn vbiasp vinn vinp voutn voutp
-*.PININFO vbiasn:I vinn:I vinp:I vbiasp:O voutn:O voutp:O
+.SUBCKT fully_differential_gain_boosting vbiasn vbiasp votan votap voutn voutp
+*.PININFO vbiasn:I votan:I votap:I vbiasp:O voutn:O voutp:O
 MM8 voutn net22 net23 gnd! nmos w=WA l=LA nfin=nA
 MM7 voutp net19 net21 gnd! nmos w=WA l=LA nfin=nA
-MM3 net23 vinp net15 gnd! nmos w=WA l=LA nfin=nA
-MM0 net21 vinn net15 gnd! nmos w=WA l=LA nfin=nA
+MM3 net23 votap net15 gnd! nmos w=WA l=LA nfin=nA
+MM0 net21 votan net15 gnd! nmos w=WA l=LA nfin=nA
 MM4 net15 vbiasn gnd! gnd! nmos w=WA l=LA nfin=nA
 MM6 voutn net24 net25 vdd pmos w=WA l=LA nfin=nA
 MM5 voutp net20 net12 vdd pmos w=WA l=LA nfin=nA

@@ -1,4 +1,4 @@
-.subckt 18_passive_mixer clk0 clk90 clk180 clk270 vrfp vrfn vcmbias vdda_q
+.subckt test_passive_mixer clk0 clk90 clk180 clk270 vrfp vrfn vcmbias
 c7 n5 vrfn cap=13pF
 c8 n6 vrfn cap=13pF
 c9 n7 vrfn cap=13pF
@@ -19,4 +19,4 @@ M8 n5 clk0 vcmbias vcmbias nmos_rf lr=60e-9 wr=4e-6 nr=16
 M9 n6 clk90 vcmbias vcmbias nmos_rf lr=60e-9 wr=4e-6 nr=16
 M10 n7 clk180 vcmbias vcmbias nmos_rf lr=60e-9 wr=4e-6 nr=16
 M11 n8 clk270 vcmbias vcmbias nmos_rf lr=60e-9 wr=4e-6 nr=16
-.ends 18_passive_mixer
+.ends test_passive_mixer
