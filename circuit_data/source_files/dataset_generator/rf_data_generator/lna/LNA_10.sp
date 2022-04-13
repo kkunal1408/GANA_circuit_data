@@ -2,7 +2,7 @@
 * auCdl Netlist:
 *
 * Library Name:  RF_LNA
-* Top Cell Name: 10_CG_cascode_stage_full
+* Top Cell Name: 10_lna_cg_cascode_stage_full
 * View Name:     schematic
 * Netlisted on:  Apr  4 10:14:12 2019
 ************************************************************************
@@ -26,11 +26,11 @@
 
 ************************************************************************
 * Library Name: RF_LNA
-* Cell Name:    10_CG_cascode_stage_full
+* Cell Name:    10_lna_cg_cascode_stage_full
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 10_CG_cascode_stage_full vbiasn1 vbiasn2 vantenna vrf
+.SUBCKT 10_lna_cg_cascode_stage_full vbiasn1 vbiasn2 vantenna vrf
 *.PININFO vbiasp:I vantenna:I vrf:O
 CC3 net49 gnd! 1p
 CC0 vdd! vrf 1p

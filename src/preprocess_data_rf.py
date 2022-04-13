@@ -102,7 +102,7 @@ def read_inputs(dir_path, results_dir_path, data_type, num_of_designs):
                         feature.append(1)
                     else:
                         feature.append(0)
-                    if 'in' in node.lower():
+                    if 'vin' in node.lower():
                         feature.append(1)
                     else:
                         feature.append(0)
@@ -110,7 +110,7 @@ def read_inputs(dir_path, results_dir_path, data_type, num_of_designs):
                         feature.append(1)
                     else:
                         feature.append(0)
-                    if 'out' in node.lower():
+                    if 'vout' in node.lower():
                         feature.append(1)
                     else:
                         feature.append(0)
@@ -121,15 +121,28 @@ def read_inputs(dir_path, results_dir_path, data_type, num_of_designs):
                         feature.append(0)
                     feature.append(1)
                 else:
-                    feature.extend([0,0,0,0,0,0])
+                    feature.extend([0,0,0,0,0,0, 0])
                 if 'net' != attr['inst_type'] and 'values' in attr:
                     feature.append(attr['values'])
                 else:
                     feature.append(0)
-                if 'XIOTA' in node.upper():
+                if '|fully_differential_' in node.lower() or 'ota' in node.lower():
+                    #OTA
+                    feature.append(4)
+                elif 'oscillator' in node.lower() or 'vlo' in node.lower():
+                    #oscillator
+                    feature.append(3)
+                elif 'mixer' in node.lower():
+                    #mixer
+                    feature.append(2)
+                elif 'lna' in node.lower() or 'test_circuit' in node.lower():
+                        #mixer
                     feature.append(1)
-                else:
+                elif [True for n in ['vdd', 'gnd', 'vrf', 'antenna', 'bias', 'digital', 'vtune', 'gs1', 'gs2', 'control', 'vout'] if n in node.lower()]:
+                    #mixer
                     feature.append(0)
+                else:
+                    assert False, f"unknown hierarchy {node}"
                 feature_matrix.append(feature)
             if df.empty:
                 df = pd.DataFrame(feature_matrix, columns=features_name)

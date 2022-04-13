@@ -2,7 +2,7 @@
 * auCdl Netlist:
 *
 * Library Name:  RF_LNA
-* Top Cell Name: 15_CS_load_switching
+* Top Cell Name: 15_lna_cs_load_switching
 * View Name:     schematic
 * Netlisted on:  Apr  4 12:20:15 2019
 ************************************************************************
@@ -26,11 +26,11 @@
 
 ************************************************************************
 * Library Name: RF_LNA
-* Cell Name:    15_CS_load_switching
+* Cell Name:    15_lna_cs_load_switching
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 15_CS_load_switching GS1 GS2 vbiasn vantenna vrf
+.SUBCKT 15_lna_cs_load_switching GS1 GS2 vbiasn vantenna vrf
 *.PININFO GS1:I GS2:I Vb:I vantenna:I vrf:O
 RR0 vrf vdd! res=1K
 RRb gnd! net15 res=1K

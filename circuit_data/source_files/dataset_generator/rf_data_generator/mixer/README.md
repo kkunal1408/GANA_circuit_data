@@ -22,7 +22,7 @@ These are the list of Mixers available here. In some cases image and SPICE may n
 
 
 # Features
-These topologies can be classified broadly in three categories (Common-Source (CS), Common-Gate (CG), Broadband).
+These topologies can be classified broadly in three categories (Common-Source (CS), Common-Gate (cg), Broadband).
 1. The input signals from LNA is named as "vrf" or "vrfn" and "Vrfp" in case of double mixers
 2. The input signals from two oscillators are marked as "vlon" and "vlop"
 3. The bias signals are marked as "Vbiasn/Vbiasp". In some cases there would be two bias signals "Vbiasn1/Vbiasn2" where Vbiasn2 > Vbiasn1. In some cases there are three bias signals Vbiasn0, Vbiasn1 and Vbiasn2 where Vbiasn0 < Vbiasn1 < Vbiasn2

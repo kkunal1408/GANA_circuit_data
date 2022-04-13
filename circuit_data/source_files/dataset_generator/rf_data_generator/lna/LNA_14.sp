@@ -2,7 +2,7 @@
 * auCdl Netlist:
 *
 * Library Name:  RF_LNA
-* Top Cell Name: 14_CS_noise_cancelling
+* Top Cell Name: 14_lna_cs_noise_cancelling
 * View Name:     schematic
 * Netlisted on:  Apr  4 12:19:20 2019
 ************************************************************************
@@ -26,11 +26,11 @@
 
 ************************************************************************
 * Library Name: RF_LNA
-* Cell Name:    14_CS_noise_cancelling
+* Cell Name:    14_lna_cs_noise_cancelling
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 14_CS_noise_cancelling vbiasp vantenna vrf
+.SUBCKT 14_lna_cs_noise_cancelling vbiasp vantenna vrf
 *.PININFO vbiasp:I vantenna:I vrf:O
 MM4 vrf net10 vdd! vdd! pmos_rvt w=27n l=20n nfin=1
 MM0 net8 gnd! net9 vdd! pmos_rvt w=27n l=20n nfin=1

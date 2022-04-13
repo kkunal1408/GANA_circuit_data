@@ -38,11 +38,11 @@ MM0 Vbiasn Vbiasn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 
 ************************************************************************
 * Library Name: RF_LNA
-* Cell Name:    2_CS_resistive_feedback
+* Cell Name:    2_lna_cs_resistive_feedback
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 2_CS_resistive_feedback Vbiasp Vin Vout
+.SUBCKT 2_lna_cs_resistive_feedback Vbiasp Vin Vout
 *.PININFO Vbiasp:I Vin:I Vout:O
 MM1 Vout Vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
 MM0 Vout net6 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
@@ -59,6 +59,6 @@ CC1 Vin net6 1p
 .SUBCKT biased_lna_1_2 Vin Vout
 *.PININFO Vin:I Vout:O
 XI0 net5 / CR1_1
-XI2 net5 Vin Vout / 2_CS_resistive_feedback
+XI2 net5 Vin Vout / 2_lna_cs_resistive_feedback
 .ENDS
 

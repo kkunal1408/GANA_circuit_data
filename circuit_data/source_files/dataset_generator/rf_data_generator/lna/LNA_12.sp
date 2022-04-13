@@ -2,7 +2,7 @@
 * auCdl Netlist:
 *
 * Library Name:  RF_LNA
-* Top Cell Name: 12_CS_inductive_degenerate_with_pads
+* Top Cell Name: 12_lna_cs_inductive_degenerate_with_pads
 * View Name:     schematic
 * Netlisted on:  Apr  4 10:14:51 2019
 ************************************************************************
@@ -26,11 +26,11 @@
 
 ************************************************************************
 * Library Name: RF_LNA
-* Cell Name:    12_CS_inductive_degenerate_with_pads
+* Cell Name:    12_lna_cs_inductive_degenerate_with_pads
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 12_CS_inductive_degenerate_with_pads vbiasn vrf vantenna
+.SUBCKT 12_lna_cs_inductive_degenerate_with_pads vbiasn vrf vantenna
 *.PININFO vbiasn:I vantenna:I vrf:O
 LL0 vdd! vrf ind=1n
 LL1 net18 gnd! ind=1n

@@ -2,7 +2,7 @@
 * auCdl Netlist:
 *
 * Library Name:  RF_LNA
-* Top Cell Name: 7_CG_biasing_with_proper_biasing
+* Top Cell Name: 7_lna_cg_biasing_with_proper_biasing
 * View Name:     schematic
 * Netlisted on:  Apr  4 10:13:09 2019
 ************************************************************************
@@ -26,11 +26,11 @@
 
 ************************************************************************
 * Library Name: RF_LNA
-* Cell Name:    7_CG_biasing_with_proper_biasing
+* Cell Name:    7_lna_cg_biasing_with_proper_biasing
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 7_CG_biasing_with_proper_biasing Vb Vin Vout
+.SUBCKT 7_lna_cg_biasing_with_proper_biasing Vb Vin Vout
 *.PININFO Vbiasp:I Vin:I Vout:O
 RR0 gnd! net17 res=1K
 RRb gnd! net14 res=1K

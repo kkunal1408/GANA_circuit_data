@@ -2,7 +2,7 @@
 * auCdl Netlist:
 *
 * Library Name:  RF_LNA
-* Top Cell Name: 9_CG_cascode_stage_biasing
+* Top Cell Name: 9_lna_cg_cascode_stage_biasing
 * View Name:     schematic
 * Netlisted on:  Apr  4 10:13:47 2019
 ************************************************************************
@@ -26,11 +26,11 @@
 
 ************************************************************************
 * Library Name: RF_LNA
-* Cell Name:    9_CG_cascode_stage_biasing
+* Cell Name:    9_lna_cg_cascode_stage_biasing
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 9_CG_cascode_stage_biasing Vb Vin Vout
+.SUBCKT 9_lna_cg_cascode_stage_biasing Vb Vin Vout
 *.PININFO Vbiasp:I Vin:I Vout:O
 CC2 net31 gnd! 1p
 CC0 vdd! Vout 1p
