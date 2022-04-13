@@ -2,7 +2,7 @@
 * auCdl Netlist:
 *
 * Library Name:  RF_mixer
-* Top Cell Name: 12_single_balanced_load_current_source_mixer
+* Top Cell Name: 12_single_balanced_load_current_source_mixer_mixer
 * View Name:     schematic
 * Netlisted on:  Apr  4 10:06:33 2019
 ************************************************************************
@@ -26,11 +26,11 @@
 
 ************************************************************************
 * Library Name: RF_mixer
-* Cell Name:    12_single_balanced_load_current_source_mixer
+* Cell Name:    12_single_balanced_load_current_source_mixer_mixer
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 12_single_balanced_load_current_source_mixer vbiasn1 vbiasn2 vbiasp votan votap vrf vlon vlop
+.SUBCKT 12_single_balanced_load_current_source_mixer_mixer vbiasn1 vbiasn2 vbiasp votan votap vrf vlon vlop
 *.PININFO Vb:I vbiasn1:I vbiasn2:I vbiasp:I vrf:I vlon:I vlop:I votan:O votap:O
 MM1 votap net017 net21 gnd! nmos_rvt w=27n l=20n nfin=1
 MM0 votan net019 net21 gnd! nmos_rvt w=27n l=20n nfin=1
