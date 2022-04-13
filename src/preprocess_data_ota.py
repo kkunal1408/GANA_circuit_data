@@ -121,7 +121,7 @@ def read_inputs(dir_path, results_dir_path, data_type, num_of_designs):
                         feature.append(0)
                     feature.append(1)
                 else:
-                    feature.extend([0,0,0,0,0,0])
+                    feature.extend([0,0,0,0,0,0,0])
                 if 'net' != attr['inst_type'] and 'values' in attr:
                     feature.append(attr['values'])
                 else:
