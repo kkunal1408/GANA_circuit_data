@@ -2,7 +2,7 @@
 * auCdl Netlist:
 *
 * Library Name:  RF_LNA
-* Top Cell Name: 5_CG_current_source
+* Top Cell Name: 5_lna_cg_current_source
 * View Name:     schematic
 * Netlisted on:  Apr  4 10:12:21 2019
 ************************************************************************
@@ -26,11 +26,11 @@
 
 ************************************************************************
 * Library Name: RF_LNA
-* Cell Name:    5_CG_current_source
+* Cell Name:    5_lna_cg_current_source
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 5_CG_current_source vbiasn1 vbiasn2 vantenna vrf
+.SUBCKT 5_lna_cg_current_source vbiasn1 vbiasn2 vantenna vrf
 *.PININFO vbiasn1:I vbiasn2:I vantenna:I vrf:O
 CC1 vantenna net13 1p
 RR2 gnd! net13 res=1K

@@ -2,7 +2,7 @@
 * auCdl Netlist:
 *
 * Library Name:  RF_LNA
-* Top Cell Name: 1_CS_inductive_load
+* Top Cell Name: 1_lna_cs_inductive_load
 * View Name:     schematic
 * Netlisted on:  Apr  4 11:53:55 2019
 ************************************************************************
@@ -26,11 +26,11 @@
 
 ************************************************************************
 * Library Name: RF_LNA
-* Cell Name:    1_CS_inductive_load
+* Cell Name:    1_lna_cs_inductive_load
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 1_CS_inductive_load vbiasn vantenna vrf
+.SUBCKT 1_lna_cs_inductive_load vbiasn vantenna vrf
 *.PININFO vbiasn:I vantenna:I vrf:O
 LL0 vdd! vrf ind=2m
 MM0 vrf net5 gnd! gnd! nmos_rvt w=27n l=20n nfin=1

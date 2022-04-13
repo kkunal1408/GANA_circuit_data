@@ -2,7 +2,7 @@
 * auCdl Netlist:
 *
 * Library Name:  RF_LNA
-* Top Cell Name: 18_CS_differential
+* Top Cell Name: 18_lna_cs_differential
 * View Name:     schematic
 * Netlisted on:  Apr  4 10:17:01 2019
 ************************************************************************
@@ -26,11 +26,11 @@
 
 ************************************************************************
 * Library Name: RF_LNA
-* Cell Name:    18_CS_differential
+* Cell Name:    18_lna_cs_differential
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 17_CS_differential vbiasn vantenna1 vantenna2 vrfn vrfp
+.SUBCKT 17_lna_cs_differential vbiasn vantenna1 vantenna2 vrfn vrfp
 *.PININFO vbiasn:I vantenna1:I vantenna2:I vrfn:O vrfp:O
 LL0 vdd! vrfp ind=1n
 LL1 net33 gnd! ind=1n

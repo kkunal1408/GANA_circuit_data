@@ -38,11 +38,11 @@ MM0 Vbiasn Vbiasn gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 
 ************************************************************************
 * Library Name: RF_LNA
-* Cell Name:    1_CS_inductive_load
+* Cell Name:    1_lna_cs_inductive_load
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 1_CS_inductive_load Vbiasp Vin Vout
+.SUBCKT 1_lna_cs_inductive_load Vbiasp Vin Vout
 *.PININFO Vbiasp:I Vin:I Vout:O
 LL0 vdd! Vout 2m
 MM0 Vout net5 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
@@ -59,6 +59,6 @@ CC1 Vin net5 10f
 .SUBCKT biased_lna_1_1 Vin Vout
 *.PININFO Vin:I Vout:O
 XI0 net1 / CR1_1
-XI1 net1 Vin Vout / 1_CS_inductive_load
+XI1 net1 Vin Vout / 1_lna_cs_inductive_load
 .ENDS
 

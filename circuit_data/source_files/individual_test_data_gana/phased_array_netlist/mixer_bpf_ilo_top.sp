@@ -220,7 +220,7 @@ C43 (IN_INT net011) cap=16pF
 * M12 (VDD net063 VOUTN VOUTN) nmos_rf lr=120.0n wr=2u nr=32 m=1
 *CS transistor
 M4 (OUTN net011 VSS VSS) nmos_rf lr=60n wr=1u nr=10 m=4
-*CG transoistor
+*cg transoistor
 M13 (OUTP net0252 IN_INT IN_INT) nmos_rf lr=60n wr=1u nr=10 m=1
 * R0 (VOUTP VSS ) res=20K
 R32 (VDD OUTP ) res=8K l=24.0u w=3u m=1

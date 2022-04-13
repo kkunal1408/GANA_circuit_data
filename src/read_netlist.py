@@ -231,7 +231,7 @@ class spiceParser:
             for net_name in node["ports"]:
                 if net_name not in self.subckts[subckt_name]["ports"]:
                     logging.info("Net internal to subckt")
-                    net_name = subckt_inst+net_name
+                    net_name = subckt_inst+subckt_name+'_'+net_name
                 elif connected_nets:
                     logging.info("Net is part of higher level subckt")
                     net_name = connected_nets[self.subckts[subckt_name]["ports"].index(
@@ -328,7 +328,7 @@ def _write_circuit_graph(out_dir, data_type, filename, graph):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description="directory path for input circuits")
-    parser.add_argument("-d", "--input_zip", type=str)
+    parser.add_argument("-zip", "--input_zip", type=str)
     parser.add_argument("-flat", "--flat", type=int, default=1)
     args = parser.parse_args()
     spice_files = args.input_zip

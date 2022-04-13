@@ -2,7 +2,7 @@
 * auCdl Netlist:
 *
 * Library Name:  RF_LNA
-* Top Cell Name: 6_CG_biasing_with_resistor
+* Top Cell Name: 6_lna_cg_biasing_with_resistor
 * View Name:     schematic
 * Netlisted on:  Apr  4 10:12:50 2019
 ************************************************************************
@@ -26,11 +26,11 @@
 
 ************************************************************************
 * Library Name: RF_LNA
-* Cell Name:    6_CG_biasing_with_resistor
+* Cell Name:    6_lna_cg_biasing_with_resistor
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 6_CG_biasing_with_resistor vbiasn vantenna vrf
+.SUBCKT 6_lna_cg_biasing_with_resistor vbiasn vantenna vrf
 *.PININFO vbiasn:I vantenna:I vrf:O
 CC1 vantenna net14 1p
 RRb gnd! net14 res=1K

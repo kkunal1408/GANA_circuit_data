@@ -2,7 +2,7 @@
 * auCdl Netlist:
 *
 * Library Name:  RF_LNA
-* Top Cell Name: 13_CS_transformer_feedforward
+* Top Cell Name: 13_lna_cs_transformer_feedforward
 * View Name:     schematic
 * Netlisted on:  Apr  4 12:21:32 2019
 ************************************************************************
@@ -26,11 +26,11 @@
 
 ************************************************************************
 * Library Name: RF_LNA
-* Cell Name:    13_CS_transformer_feedforward
+* Cell Name:    13_lna_cs_transformer_feedforward
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 13_CS_transformer_feedforward vbiasp vantenna vrf
+.SUBCKT 13_lna_cs_transformer_feedforward vbiasp vantenna vrf
 *.PININFO vbiasp:I vantenna:I vrf:O
 CC2 vdd! gnd! 1p
 CC0 vdd! vrf 1p

@@ -2,7 +2,7 @@
 * auCdl Netlist:
 *
 * Library Name:  RF_mixer
-* Top Cell Name: 8_passive_with_gain_stage_bias_bath_baseband_output
+* Top Cell Name: 8_passive_with_gain_stage_bias_bath_rf_baseband_output_mixer
 * View Name:     schematic
 * Netlisted on:  Apr  4 10:05:04 2019
 ************************************************************************
@@ -26,11 +26,11 @@
 
 ************************************************************************
 * Library Name: RF_mixer
-* Cell Name:    8_passive_with_gain_stage_bias_bath_baseband_output
+* Cell Name:    8_passive_with_gain_stage_bias_bath_rf_baseband_output_mixer
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 8_passive_with_gain_stage_bias_bath_baseband_output vbiasp vrf votan votap vlon vlop
+.SUBCKT 8_passive_with_gain_stage_bias_bath_rf_baseband_output_mixer vbiasp vrf votan votap vlon vlop
 *.PININFO vbiasp:I vrf:I vlon:I vlop:I votan:O votap:O
 CC0 vrf net26 1p
 CC1 net40 gnd! 1p

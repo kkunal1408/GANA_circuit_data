@@ -32,7 +32,7 @@ def write_results(df, graph_id, graph, results_dir_path, status='test'):
     # size = df['values']
     # print(size)
     feat = df.drop(['name', 'label', 'values'], axis=1)
-    assert feat.shape[1] ==12, f"{feat.shape}"
+    assert feat.shape[1] ==15, f"{feat.shape}"
     np.save(dir+status+'_feats.npy', np.array(feat, dtype=np.int64))
     np.save(dir+status+'_labels.npy', np.array(mod_label, dtype=np.int64))
     np.save(dir+status+'_graph_id.npy', graph_id)
@@ -44,8 +44,10 @@ def write_results(df, graph_id, graph, results_dir_path, status='test'):
 
 
 features_name = ["name", "nmos", "pmos", "cap", "res",
-         "inductor", 'net', 'power', 'gnd', 'bias',
-         'in', 'out', 'port', 'values', "label"]
+                 "inductor", 'net', 'power', 'gnd', 'bias',
+                 'antenna', 'in', 'clk', 'out', 'enable', 'port', 'values', "label"]
+
+
 def read_inputs(dir_path, results_dir_path, data_type, num_of_designs):
     input_files = os.listdir(dir_path)
     assert len(input_files) > 0, f"No graphs found in directory {dir_path}"
@@ -76,6 +78,8 @@ def read_inputs(dir_path, results_dir_path, data_type, num_of_designs):
                 feature.append(node)
                 node_count += 1
                 if 'inst_type' in attr:
+                    assert attr['inst_type'] in [
+                        "nmos", "pmos", "cap", "res", "inductor", 'net']
                     for itype in ["nmos", "pmos", "cap", "res", "inductor", 'net']:
                         if itype in attr['inst_type']:
                             feature.append(1)
@@ -94,7 +98,15 @@ def read_inputs(dir_path, results_dir_path, data_type, num_of_designs):
                         feature.append(1)
                     else:
                         feature.append(0)
+                    if 'antenna' in node.lower():
+                        feature.append(1)
+                    else:
+                        feature.append(0)
                     if 'in' in node.lower():
+                        feature.append(1)
+                    else:
+                        feature.append(0)
+                    if 'clk' in node.lower():
                         feature.append(1)
                     else:
                         feature.append(0)
@@ -102,9 +114,14 @@ def read_inputs(dir_path, results_dir_path, data_type, num_of_designs):
                         feature.append(1)
                     else:
                         feature.append(0)
+                    if 'gs' in node.lower() or 'digital' in node.lower() or 'tune' in node.lower() or 'control' in node.lower():
+                        #enable
+                        feature.append(1)
+                    else:
+                        feature.append(0)
                     feature.append(1)
                 else:
-                    feature.extend([0,0,0,0])
+                    feature.extend([0,0,0,0,0,0])
                 if 'net' != attr['inst_type'] and 'values' in attr:
                     feature.append(attr['values'])
                 else:

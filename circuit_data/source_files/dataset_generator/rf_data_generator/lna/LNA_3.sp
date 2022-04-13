@@ -2,7 +2,7 @@
 * auCdl Netlist:
 *
 * Library Name:  RF_LNA
-* Top Cell Name: 3_CS_active_load
+* Top Cell Name: 3_lna_cs_active_load
 * View Name:     schematic
 * Netlisted on:  Apr  4 10:11:33 2019
 ************************************************************************
@@ -26,11 +26,11 @@
 
 ************************************************************************
 * Library Name: RF_LNA
-* Cell Name:    3_CS_active_load
+* Cell Name:    3_lna_cs_active_load
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 3_CS_active_load vbiasp vantenna vrf
+.SUBCKT 3_lna_cs_active_load vbiasp vantenna vrf
 *.PININFO vbiasp:I vantenna:I vrf:O
 MM2 net21 vbiasp vdd! vdd! pmos_rvt w=27n l=20n nfin=1
 MM1 vrf vrf net21 net21 pmos_rvt w=27n l=20n nfin=1

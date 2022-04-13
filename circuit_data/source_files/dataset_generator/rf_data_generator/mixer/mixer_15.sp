@@ -2,7 +2,7 @@
 * auCdl Netlist:
 *
 * Library Name:  RF_mixer
-* Top Cell Name: 15_single_capacitive_coupling_resonance
+* Top Cell Name: 15_single_capacitive_coupling_resonance_mixer
 * View Name:     schematic
 * Netlisted on:  Apr  4 10:08:08 2019
 ************************************************************************
@@ -26,11 +26,11 @@
 
 ************************************************************************
 * Library Name: RF_mixer
-* Cell Name:    15_single_capacitive_coupling_resonance
+* Cell Name:    15_single_capacitive_coupling_resonance_mixer
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT 15_single_capacitive_coupling_resonance vbiasn0 vbiasn1 vbiasn2 votan votap vrf vlon vlop
+.SUBCKT 15_single_capacitive_coupling_resonance_mixer vbiasn0 vbiasn1 vbiasn2 votan votap vrf vlon vlop
 *.PININFO Vb:I vbiasn1:I vbiasn2:I vrf:I vlon:I vlop:I votan:O votap:O
 MM4 net22 vbiasn0 gnd! gnd! nmos_rvt w=27n l=20n nfin=1
 MM0 votan net021 net22 gnd! nmos_rvt w=27n l=20n nfin=1
