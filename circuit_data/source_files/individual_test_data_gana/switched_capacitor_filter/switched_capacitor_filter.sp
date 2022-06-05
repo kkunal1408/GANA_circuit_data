@@ -1,15 +1,3 @@
-** Generated for: hspiceD
-** Generated on: Jun 19 10:29:58 2019
-** Design library name: ALIGN_circuits_ASAP7nm
-** Design cell name: switched_capacitor_filter_spice
-** Design view name: schematic
-
-
-.TEMP 25.0
-.OPTION INGOLD=2 ARTIST=2 PSF=2 MEASOUT=1 PARHIER=LOCAL PROBE=0 MARCH=2 ACCURACY=1 POST
-** Library name: ALIGN_circuits_ASAP7nm
-** Cell name: telescopic_ota
-** View name: schematic
 .subckt telescopic_ota d1 vdd vinn vinp vss vbiasn vbiasp1 vbiasp2 voutn voutp
 m9 voutn vbiasn net8 vss nmos_rvt w=270e-9 l=20e-9 nfin=9 nf=4
 m8 voutp vbiasn net014 vss nmos_rvt w=270e-9 l=20e-9 nfin=9 nf=4
@@ -22,12 +10,6 @@ m6 voutn vbiasp2 net06 net06 pmos_rvt w=270e-9 l=20e-9 nfin=12 nf=2
 m2 net012 vbiasp1 vdd vdd pmos_rvt w=270e-9 l=20e-9 nfin=6 nf=2
 m1 net06 vbiasp1 vdd vdd pmos_rvt w=270e-9 l=20e-9 nfin=6 nf=2
 .ends telescopic_ota
-** End of subcircuit definition.
-
-** Library name: ALIGN_circuits_ASAP7nm
-** Cell name: switched_capacitor_filter_spice
-** View name: schematic
-
 .subckt switched_capacitor_filter voutn voutp vinp vinn id agnd vss vdd
 m0 voutn phi1 net67 vss nmos_rvt w=270e-9 l=20e-9 nfin=6 nf=2
 m7 net66 phi1 net63 vss nmos_rvt w=270e-9 l=20e-9 nfin=6 nf=2
