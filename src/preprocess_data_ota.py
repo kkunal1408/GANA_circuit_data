@@ -48,6 +48,32 @@ features_name = ["name", "nmos", "pmos", "cap", "res",
                  'antenna', 'in', 'clk', 'out', 'enable', 'port', 'values', "label"]
 
 
+def merge_nodes(G, nodes, new_node, attr_dict):
+    """
+    Merges the selected `nodes` of the graph G into one `new_node`,
+    meaning that all the edges that pointed to or from one of these
+    `nodes` will point to or from the `new_node`.
+    attr_dict and **attr are defined as in `G.add_node`.
+    """
+    assert new_node not in G.nodes(), f" node {new_node} already existing"
+    # print(attr_dict)
+    G.add_node(new_node, **attr_dict)  # Add the 'merged' node
+    # print(G.nodes[new_node])
+    new_edges = []
+    for n1, n2, data in G.edges(data=True):
+        # print(f"added node {n1} {n2}")
+        # For all edges related to one of the nodes to merge,
+        # make an edge going to or coming from the `new gene`.
+        if n1 in nodes:
+            new_edges.append((new_node, n2, data))
+        elif n2 in nodes:
+            new_edges.append((n1, new_node, data))
+    for edge in new_edges:
+        G.add_edge(edge[0],edge[1],**edge[2])
+    # print(G.nodes["vdd!"],G.edges("vdd!", n1))
+
+    for n in nodes:  # remove the merged nodes
+        G.remove_node(n)
 def read_inputs(dir_path, results_dir_path, data_type, num_of_designs):
     input_files = os.listdir(dir_path)
     assert len(input_files) > 0, f"No graphs found in directory {dir_path}"
@@ -71,6 +97,15 @@ def read_inputs(dir_path, results_dir_path, data_type, num_of_designs):
             if not os.path.exists(results_dir_path):
                 os.mkdir(results_dir_path)
             mapping = {}
+            #connect_global_signals
+            vdd_nodes = [
+                node for node in hier_graph.nodes if node.endswith('vdd!')]
+            merge_nodes(hier_graph, vdd_nodes, 'vdd!',
+                        {'inst_type': 'net', 'net_type': 'external'})
+            gnd_nodes = [
+                node for node in hier_graph.nodes if node.endswith('gnd!')]
+            merge_nodes(hier_graph, gnd_nodes, 'gnd!',
+                        {'inst_type': 'net', 'net_type': 'external'})
             for node, attr in hier_graph.nodes(data=True):
                 graph_id.append(design_no)
                 mapping[node] = node_count
@@ -125,7 +160,7 @@ def read_inputs(dir_path, results_dir_path, data_type, num_of_designs):
                 if 'net' != attr['inst_type'] and 'values' in attr:
                     feature.append(attr['values'])
                 else:
-                    feature.append(0)
+                    feature.append(0) #no sizing information
                 if 'net' == attr['inst_type']:
                     feature.append(int(np.round(np.mean(['XIOTA' in nbr.upper() for nbr in hier_graph.neighbors(node)]))))
                 elif 'XIOTA' in node.upper():

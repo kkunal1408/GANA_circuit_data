@@ -30,8 +30,7 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT Fully_differential_miller_compensated_pmos Vbiasn1 Vbiasp Vinn Vinp
-+ Voutn Voutp
+.SUBCKT Fully_differential_miller_compensated_pmos Vbiasn1 Vbiasp Vinn Vinp Voutn Voutp
 *.PININFO Vbiasn1:I Vbiasp:I Vinn:I Vinp:I Voutn:O Voutp:O
 MM1 Voutn net21 gnd! gnd! nmos w=WA l=LA nfin=nA
 MM13 Voutp net25 gnd! gnd! nmos w=WA l=LA nfin=nA

@@ -1,6 +1,6 @@
 ************************************************************************
 * auCdl Netlist:
-* 
+*
 * Library Name:  OTA_class
 * Top Cell Name: Fully_differential_folded_cascode
 * View Name:     schematic
@@ -8,7 +8,7 @@
 ************************************************************************
 
 *.BIPOLAR
-*.RESI = 2000 
+*.RESI = 2000
 *.RESVAL
 *.CAPVAL
 *.DIOPERI
@@ -19,7 +19,7 @@
 .PARAM
 
 *.GLOBAL gnd!
-+        vdd!
+*+        vdd!
 
 *.PIN gnd!
 *+    vdd!
@@ -30,9 +30,9 @@
 * View Name:    schematic
 ************************************************************************
 
-.SUBCKT Fully_differential_folded_cascode Vbiasn Vbiasn1 Vbiasn2 Vbiasp1 
+.SUBCKT Fully_differential_folded_cascode Vbiasn Vbiasn1 Vbiasn2 Vbiasp1
 + Vbiasp2 Vinn Vinp Voutn
-*.PININFO Vbiasn:I Vbiasn1:I Vbiasn2:I Vbiasp1:I Vbiasp2:I Vinn:I Vinp:I 
+*.PININFO Vbiasn:I Vbiasn1:I Vbiasn2:I Vbiasp1:I Vbiasp2:I Vinn:I Vinp:I
 *.PININFO Voutn:O
 MM6 net26 Vbiasp2 net23 vdd! pmos w=WA l=LA nfin=nA
 MM5 Voutn Vbiasp2 net24 vdd! pmos w=WA l=LA nfin=nA
