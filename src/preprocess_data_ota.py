@@ -126,10 +126,13 @@ def read_inputs(dir_path, results_dir_path, data_type, num_of_designs):
                     feature.append(attr['values'])
                 else:
                     feature.append(0)
-                if 'XIOTA' in node.upper():
+                if 'net' == attr['inst_type']:
+                    feature.append(int(np.round(np.mean(['XIOTA' in nbr.upper() for nbr in hier_graph.neighbors(node)]))))
+                elif 'XIOTA' in node.upper():
                     feature.append(1)
                 else:
                     feature.append(0)
+
                 feature_matrix.append(feature)
             if df.empty:
                 df = pd.DataFrame(feature_matrix, columns=features_name)
