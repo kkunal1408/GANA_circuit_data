@@ -138,7 +138,7 @@ def read_inputs(dir_path, results_dir_path, data_type, num_of_designs):
                 elif 'lna' in node.lower() or 'test_circuit' in node.lower():
                         #mixer
                     feature.append(1)
-                elif [True for n in ['vdd', 'gnd', 'vrf', 'antenna', 'bias', 'digital', 'vtune', 'gs1', 'gs2', 'control', 'vout'] if n in node.lower()]:
+                elif [True for n in ['vdd','clk', 'gnd', 'vrf', 'antenna', 'bias', 'digital', 'vtune', 'gs1', 'gs2', 'control', 'vout'] if n in node.lower()]:
                     #mixer
                     feature.append(0)
                 else:

@@ -91,8 +91,7 @@ class spiceParser:
 
                 if not self.top_insts:
                     if top in self.subckts.keys():
-                        self.top_ckt_name = os.path.basename(
-                            self.netlist).split('.')[0]
+                        self.top_ckt_name = top
                         logging.info(
                             'No top instances found. Picking filename as top: '+self.top_ckt_name)
 
@@ -225,20 +224,20 @@ class spiceParser:
 
     def _flatten_circuit(self, subckt_name, subckt_inst="", connected_nets=""):
         flatDesign = []
-        logging.info("flattening the circuits below "+subckt_name)
+        logging.info("flattening the circuit "+subckt_name)
         for node in self.subckts[subckt_name]["nodes"]:
             modified_ports = []
             for net_name in node["ports"]:
                 if net_name not in self.subckts[subckt_name]["ports"]:
-                    logging.info("Net internal to subckt")
+                    logging.info(f"Net {net_name} internal to subckt")
                     net_name = subckt_inst+subckt_name+'_'+net_name
                 elif connected_nets:
-                    logging.info("Net is part of higher level subckt")
+                    logging.info(
+                        f"Net {net_name} is part of higher level subckt")
                     net_name = connected_nets[self.subckts[subckt_name]["ports"].index(
                         net_name)]
                 else:
-                    logging.info("net lies in top level net in:" +
-                                 node["inst"]+" net_name "+net_name)
+                    logging.info(f"Net {net_name} existing in top level")
                 modified_ports.append(net_name)
 
             if node["inst_type"] in self.subckts:

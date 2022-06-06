@@ -93,6 +93,8 @@ class spiceParser:
                         self.top_ckt_name = top
                         logging.info(
                             'No top instances found. Picking filename as top: '+self.top_ckt_name)
+                    elif 'top' in self.subckts.keys():
+                        self.top_ckt_name = 'top'
 
                     elif self.subckts.keys():
                         self.top_ckt_name = list(self.subckts.keys())[0]
@@ -229,9 +231,10 @@ class spiceParser:
             for net_name in node["ports"]:
                 if net_name not in self.subckts[subckt_name]["ports"]:
                     logging.info(f"Net {net_name} internal to subckt")
-                    net_name = subckt_inst+net_name
+                    net_name = subckt_inst+subckt_name+'_'+net_name
                 elif connected_nets:
-                    logging.info(f"Net {net_name} is part of higher level subckt")
+                    logging.info(
+                        f"Net {net_name} is part of higher level subckt")
                     net_name = connected_nets[self.subckts[subckt_name]["ports"].index(
                         net_name)]
                 else:
@@ -239,8 +242,8 @@ class spiceParser:
                 modified_ports.append(net_name)
 
             if node["inst_type"] in self.subckts:
-                flatDesign.extend(self._flatten_circuit(node["inst_type"], subckt_inst+node["inst"]+'|', list(modified_ports))
-                                  )
+                flatDesign.extend(self._flatten_circuit(node["inst_type"],subckt_inst+node["inst"]+'|', list(modified_ports))
+                )
             else:
                 flat_node = {"inst": subckt_inst+subckt_name+"_"+node["inst"],
                              "inst_type": node["inst_type"],
@@ -336,11 +339,12 @@ if __name__ == '__main__':
         output_dir), f"please delete existing directory {output_dir}"
     if 'individual' in spice_dir:
         data_types = ['switched_capacitor_filter','MIMO', 'wideband_mixer_RX', 'phased_array_netlist']
-    elif 'ota' in spice_dir.lower():
-        data_types = ['bias', 'local_generation', 'ota_unbiased']
-    elif 'rf_data' in spice_dir.lower():
-        data_types = ['lna','mixer', 'oscillator']
-    for data_type in data_types:
+    # elif 'ota' in spice_dir.lower():
+    #     data_types = ['bias', 'local_generation', 'ota_unbiased']
+    # elif 'rf_data' in spice_dir.lower():
+    #     data_types = ['lna','mixer', 'oscillator']
+    # for data_type in data_types:
+    for data_type in ['train', 'test', 'valid']:
         split_dir = spice_dir + '/' + data_type
         assert os.path.exists(split_dir), f"No {data_type} data found"
         for netlist in os.listdir(split_dir):

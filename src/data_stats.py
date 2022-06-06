@@ -48,16 +48,18 @@ features_name = ["name", "nmos", "pmos", "cap", "res",
                  'antenna', 'in', 'clk', 'out', 'enable', 'port', 'values', "label"]
 
 
-def read_inputs(input_file, data_type):
+def read_inputs(input_file):
     assert os.path.exists(input_file), f"{input_file}"
     with open(input_file, 'r') as f:
         G = nx.DiGraph(json_graph.node_link_graph(json.load(f)))
-    print(G)
-    for i in range(10 + 1):
-        mask = i
-        G_s = G.subgraph(mask)
-        edge_index = list(G_s.edges)
-        print(edge_index)
+    # print(G.nodes(data=True))
+    # print(list(G.edges))
+    print(f"File: {input_file.split('/')[-1]}, # nodes: {len(G.nodes())}, #devices {len([node for node in G.nodes(data=True) if node[1]['inst_type'] !='net' ])}, # nets: {len([node for node in G.nodes(data=True) if node[1]['inst_type'] =='net' ])} # edges: {len(G.edges())}")
+    # for i in range(10 + 1):
+    #     mask = i
+    #     G_s = G.subgraph(mask)
+    #     edge_index = list(G_s.edges)
+    #     print(edge_index)
 
 
 
@@ -66,11 +68,15 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="folder paths")
     parser.add_argument("-d", "--dir", type=str)
     args = parser.parse_args()
-    input_dir_path = args.dir+'/graphs'
-    assert os.path.exists(input_dir_path), f"directory does not exist {input_dir_path}"
+    graph_dir_path = args.dir
+    assert os.path.exists(
+        graph_dir_path), f"directory does not exist {graph_dir_path}"
 
-    for data_type in ['train', 'test', 'valid']:
-        file_path = input_dir_path + '/' + data_type + '_graph.json'
-        print(file_path)
-        assert os.path.exists(file_path), f"no input file found {file_path}"
-        read_inputs(file_path, data_type)
+    # for data_type in ['train', 'test', 'valid']:
+    #     graph_dir_path = input_dir_path + '/' + data_type
+    input_files = os.listdir(graph_dir_path)
+    # print(graph_dir_path)
+    for file_path in input_files:
+        assert os.path.exists(
+            graph_dir_path + '/'+file_path), f"no input file found {graph_dir_path + '/'+file_path}"
+        read_inputs(graph_dir_path + '/'+file_path)
