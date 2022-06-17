@@ -19,7 +19,7 @@
 .PARAM
 
 *.GLOBAL gnd!
-+        vdd!
+*+        vdd!
 
 *.PIN gnd!
 *+    vdd!

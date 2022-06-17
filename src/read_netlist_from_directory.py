@@ -87,7 +87,6 @@ class spiceParser:
                 top = os.path.basename(self.netlist).split('.')[0]
                 logging.info(
                     'NO subckt defined, checking for any instance at top')
-
                 if not self.top_insts:
                     if top in self.subckts.keys():
                         self.top_ckt_name = top
@@ -108,7 +107,7 @@ class spiceParser:
                     logging.info(
                         'Instances found at top, creating a dummy __top__ subckt')
                     self.top_ckt_name = top
-                    self.subckts[self.top_ckt_name] = {"ports": ["gnd!", "vdd"],
+                    self.subckts[self.top_ckt_name] = {"ports": ["gnd!", "vdd!"],
                                                        "nodes": self.top_insts}
 
             logging.info("List of subckts in design "+" ".join(self.subckts))
@@ -332,7 +331,7 @@ if __name__ == '__main__':
     parser.add_argument("-flat", "--flat", type=int, default=1)
     args = parser.parse_args()
     spice_dir = args.input_dir
-    output_dir = os.path.dirname(spice_dir) + '/graphs'
+    output_dir = os.path.dirname(spice_dir) + '/../graphs'
     if os.path.exists(output_dir):
         shutil.rmtree(output_dir)
     assert not os.path.exists(
@@ -341,10 +340,11 @@ if __name__ == '__main__':
         data_types = ['switched_capacitor_filter','MIMO', 'wideband_mixer_RX', 'phased_array_netlist']
     # elif 'ota' in spice_dir.lower():
     #     data_types = ['bias', 'local_generation', 'ota_unbiased']
-    # elif 'rf_data' in spice_dir.lower():
-    #     data_types = ['lna','mixer', 'oscillator']
-    # for data_type in data_types:
-    for data_type in ['train', 'test', 'valid']:
+    elif 'rf_data' in spice_dir.lower():
+        data_types = ['lna','mixer', 'oscillator']
+    else:
+        data_types = ['train', 'test', 'valid']
+    for data_type in data_types:
         split_dir = spice_dir + '/' + data_type
         assert os.path.exists(split_dir), f"No {data_type} data found"
         for netlist in os.listdir(split_dir):
