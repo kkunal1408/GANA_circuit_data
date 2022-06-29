@@ -1,7 +1,9 @@
 # Data for GANA
-[//]: # Base code has been taken from https://github.com/mdeff/cnn_graph
+
 The code in this repository reads multiple OTA circuits graphs from train_graphs directory.
 It processses all individual graphs to prepare inputs for Graph convolution network.
+
+[//]: # Base code has been taken from https://github.com/mdeff/cnn_graph
 
 # The inputs needed for GNN are:
 1. N by N adjacency matrix (N is the number of nodes),
