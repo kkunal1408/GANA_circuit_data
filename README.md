@@ -1,4 +1,4 @@
-# Circuit data for GANA
+# Circuit data for GANA: Graph Convolutional Network Based Automated Netlist Annotation for Analog Circuits
 
 The code in this repository reads multiple OTA circuits graphs from train_graphs directory.
 It processses all individual graphs to prepare inputs for Graph convolution network.
