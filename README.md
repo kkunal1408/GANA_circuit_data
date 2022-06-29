@@ -24,3 +24,18 @@ To extract features from the graphs a  which is used by the classifier
 python3 src/preprocess_data.py -d circuit_data/OTA_data/
 ```
 This creates a processed file in the circuit_data/OTA_data directory which will be used for subcircuit identification
+
+# Cite
+
+Please cite our [paper](https://ieeexplore.ieee.org/document/9116329) if you use our benchmarks in your own work:
+
+
+```
+@INPROCEEDINGS{GANA2020,
+  author={Kunal, Kishor and Dhar, Tonmoy and Madhusudan, Meghna and Poojary, Jitesh and Sharma, Arvind and Xu, Wenbin and Burns, Steven M. and Hu, Jiang and Harjani, Ramesh and Sapatnekar, Sachin S.},
+  booktitle={2020 Design, Automation & Test in Europe Conference & Exhibition (DATE)}, 
+  title={GANA: Graph Convolutional Network Based Automated Netlist Annotation for Analog Circuits}, 
+  year={2020},
+  pages={55-60}
+  }
+  ```
