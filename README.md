@@ -1,5 +1,5 @@
 # Data for GANA
-Base code has been taken from https://github.com/mdeff/cnn_graph
+[//]: # Base code has been taken from https://github.com/mdeff/cnn_graph
 The code in this repository reads multiple OTA circuits graphs from train_graphs directory.
 It processses all individual graphs to prepare inputs for Graph convolution network.
 
